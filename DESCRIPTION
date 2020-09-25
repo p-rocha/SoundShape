@@ -4,7 +4,6 @@ Version: 1.0
 Date: 2020-09-23
 Authors@R: c(
   person("Pedro", "Rocha", email="p.rocha1990@gmail.com", role = c("aut", "cre")),
-  person("Carla", "Guimaraes", email="sguimaraes.carla@gmail.com", role="ctb"),
   person("Pedro", "Romano", email="psrromano@gmail.com", role="ctb"))
 Description: This package provide the tools required for anyone to replicate and implement the eigensound method (MacLeod et al., 2013), a promising, and yet little explored protocol for bioacoustical analysis. Eigensound is a multidisciplinary method that crosses the bridge between Bioacoustics and Geometric Morphometrics Methods, thus enabling the direct comparison between stereotyped calls from different species. SoundShape package, in turn, enable anyone familiar with R to easily go from sound waves to Principal Components Analysis, using tools extracted from traditional bioacoustics (i.e. tuneR and seewave packages), geometric morphometrics (i.e. geomorph package) and multivariate analysis (e.g. stats package). For more information, please see Rocha and Romano (in prep) and check SoundShape repository on GitHub for news and updates.
 Depends: R (>= 3.3.1)
