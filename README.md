@@ -1,3 +1,5 @@
+<img align="right" height="300" width="300" src="vignettes/logo.png" />
+
 # Welcome to `SoundShape`
 
 Here, you will find information on how to implement a promising, and yet little explored method for biacoustical analysis: the so called *eigensound* analysis developed by [MacLeod, Krieger and Jones (2013)](http://www.italian-journal-of-mammalogy.it/Geometric-Morphometric-Approaches-to-Acoustic-Signal-Analysis-in-Mammalian-Biology,77249,0,2.html).
