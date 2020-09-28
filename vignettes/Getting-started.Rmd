@@ -22,7 +22,7 @@ Here, you will find information on how to implement a promising, and yet little 
 
 Eigensound is a multidisciplinary method focused on the direct comparison between homologous sounds from different species (*i.e.* stereotyped calls/acoustic units; Macleod *et al.*, 2013; Rocha & Romano *in prep*). It consists on applying a sampling grid over the representation of sound (*i.e.* spectrogram data; Figs. 1 and 2) and then translate the spectrogram into a dataset that can be analyzed similarly to coordinate sets used in Geometric Morphometrics Methods (GMM). By doing so, eigensound crosses the bridge between Bioacoustics and GMM.
 
-Despite being well described by Macleod *et al.* (2013), the method lacked a free and open platform to run the analysis. `SoundShape` package was written on [R platform](https://www.r-project.org/) to fill this applicability gap. The package features functions that enable anyone familiar with `R` to easily go from sound waves to principal components analysis (PCA), using tools extracted from traditional bioacoustics (*i.e.* [tuneR](https://cran.r-project.org/web/packages/tuneR/index.html) and [seewave](http://rug.mnhn.fr/seewave/) packages), geometric morphometrics (*i.e.* [geomorph](https://cran.r-project.org/web/packages/geomorph/index.html) package) and multivariate analysis (*e.g.* [stats](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/00Index.html) package).
+Despite being well described by Macleod *et al.* (2013), the method lacked a free and open platform to run the analysis. `SoundShape` package was written on [R platform](https://www.r-project.org/) to fill this applicability gap, featuring functions that enable anyone familiar with `R` to easily go from sound waves to principal components analysis (PCA), using tools extracted from traditional bioacoustics (*i.e.* [tuneR](https://cran.r-project.org/web/packages/tuneR/index.html) and [seewave](http://rug.mnhn.fr/seewave/) packages), geometric morphometrics (*i.e.* [geomorph](https://cran.r-project.org/web/packages/geomorph/index.html) package) and multivariate analysis (*e.g.* [stats](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/00Index.html) package).
 
 Thanks for using `SoundShape` and enjoy your reading!
 
@@ -84,7 +84,9 @@ citation("SoundShape")
 
 ## 1. Definition of homologous acoustic units
 
-Since eigensound is centered around stereotyped acoustic units, the foremost step in sound shape study is the careful definition of units from which analysis will be conducted. Although there is no universal concept of a homologous unit of biological sound encompassing the majority of calling organisms, each higher taxon has its own approaches for homologous sound comparison (see Rocha & Romano *in prep* for details on homology between units). Herein, we focus on stereotyped calls from three frog species: *Physalaemus centralis*, *P. cuvieri* and *P. kroyeri* (`centralis`, `cuvieri` and `kroyeri` sample datas, respectively; Figs. 3 -- 5). When dealing with real-life data, undertake literature research before defining the comparable acoustic units.
+Since eigensound is centered around stereotyped acoustic units, the foremost step in sound shape study is the careful definition of units from which analysis will be conducted. Although there is no universal concept of a homologous unit of biological sound encompassing the majority of calling organisms, each higher taxon has its own approaches for homologous sound comparison (see Rocha & Romano *in prep* for details on homology between units). 
+
+Herein, we focus on stereotyped calls from three frog species: *Physalaemus centralis*, *P. cuvieri* and *P. kroyeri* (`centralis`, `cuvieri` and `kroyeri` sample datas, respectively; Figs. 3 -- 5). When dealing with real-life data, undertake literature research before defining the comparable acoustic units.
 
 ```{r Fig3-centralis-units, fig.align='center', fig.height=3, fig.width=7.2} 
 # Samples of data from SoundShape package
@@ -137,7 +139,7 @@ dir.create(store.at)
 
 Once the stereotyped units have been defined, a reasonable number of units should be selected from the sample and stored as new `".wav"` files  on the folder specified by `wav.at` (see section 2 for folder paths). Each `".wav"` file should represent a single acoustic unit selected from the original sound wave. Besides, since the slightest graphical change may incur in biased results (MacLeod et al., 2013),  selection must account for optimal signal to noise ratio (*i.e.* "clean" recording), and no overlapping frequencies from other individuals, species, or background noise. Editing and filtering of sound waves must be restricted to a bare minimum. 
 
-The selection can be performed on numerous softwares of acoustic analysis outside `R` platform (*e.g.* [Audacity](https://www.audacityteam.org/), [Raven Pro](http://ravensoundsoftware.com/software/raven-pro/)), or using some functions from [seewave](http://rug.mnhn.fr/seewave/) and [tuneR](https://cran.r-project.org/web/packages/tuneR/index.html) packages as exemplified below:
+The selection of sound units can be performed on numerous softwares of acoustic analysis outside `R` platform (*e.g.* [Audacity](https://www.audacityteam.org/), [Raven Pro](http://ravensoundsoftware.com/software/raven-pro/)), or using some functions from [seewave](http://rug.mnhn.fr/seewave/) and [tuneR](https://cran.r-project.org/web/packages/tuneR/index.html) packages, as exemplified below:
 
 ```{r cut-units}
 # Select acoustic units
@@ -238,9 +240,9 @@ plot3D::contour3D(x=s.kro$time, y=s.kro$freq, colvar=t(s.kro$amp), z=-25,
 
 ## 5. Define sampling grid and run `eigensound`
 
-Once the sound window dimensions are defined (section 4.1), the acoustic units placed at the beginning of a sound window (section 4.2), and the relative amplitude background is set (section 4.3), next is the definition of sampling grid dimensions that will be used for semilandmark acquisition (*i.e.* number of cells per side; `x.length` and `y.length` arguments, `eigensound` function; Fig. 8). 
+Once the sound window dimensions are defined (section 4.1), the acoustic units placed at the beginning of a sound window (section 4.2), and the relative amplitude background is set (section 4.3), next is the definition of sampling grid dimensions that will be used for semilandmark acquisition (*i.e.* number of cells per side; `x.length` and `y.length` arguments, `eigensound` function). 
 
-In our study sample, we opted for 70 cells on the time (*x*-axis, `x.length = 70`) and 47 cells on the frequency (*y*-axis, `y.length = 47`), which was iteratively defined with the aid of `threeDspectro` function (`SoundShape` package), as exemplified below:
+In our study sample, we opted for 70 cells on the time (*x*-axis, `x.length = 70`) and 47 cells on the frequency (*y*-axis, `y.length = 47`), which was iteratively defined with the aid of `threeDspectro` function (`SoundShape` package), as exemplified below (Fig. 8):
 
 ```{r Fig8-sampling-grid, fig.align='center', fig.height=4, fig.width=7.2}
 # Using threeDspectro to visualize sampling grid 
@@ -248,12 +250,12 @@ par(mfrow=c(1,2), mar=c(1,2,1,0))
 
 # As "surface"
 threeDspectro(cut.kroyeri, samp.grid=TRUE, x.length=70, y.length=47, plot.type="surface", 
-              dBlevel=25, flim=c(0, 4), tlim=c(0, 0.8), f=44100, wl=512, ovlp=70, main="As 'surface'",
+              dBlevel=25, flim=c(0, 4), tlim=c(0, 0.8), main="As 'surface'",
               colkey=list(plot=FALSE), cex.axis=0.4, cex.lab=0.8)
 
 # As "points"
 threeDspectro(cut.kroyeri, samp.grid=TRUE, x.length=70, y.length=47, plot.type="points", 
-              dBlevel=25, flim=c(0, 4), tlim=c(0, 0.8), f=44100, wl=512, ovlp=70, main="As 'points'",
+              dBlevel=25, flim=c(0, 4), tlim=c(0, 0.8), main="As 'points'",
               colkey=list(plot=FALSE), cex.axis=0.4, cex.lab=0.8)
 
 ```
@@ -264,7 +266,7 @@ threeDspectro(cut.kroyeri, samp.grid=TRUE, x.length=70, y.length=47, plot.type="
  
 Once the protocol for error verification is concluded (section 4) and the sampling grid is defined (Section 5; Fig. 8), it is now possible to acquire comparable semilandmark coordinates using `eigensound` function. 
 
-Results can be simultaneosly assigned to an `R` object, and/or stored as the native file format of TPS series ([Rohlf, 2015](http://www.italian-journal-of-mammalogy.it/The-tps-series-of-software,77186,0,2.html)), a `".tps"` file to be used by numerous softwares of geometric analysis of shape. Herein, we focus on the analysis within `R` platform, so the results are assigned to the `R` object `eig.sample`, which is available as sample data from `SoundShape`.
+Results can be simultaneosly assigned to an `R` object, and/or stored as the native file format of TPS series ([Rohlf, 2015](http://www.italian-journal-of-mammalogy.it/The-tps-series-of-software,77186,0,2.html)). Herein, we focus on the analysis within `R` platform, so the results are assigned to the `R` object `eig.sample`, which is available as sample data from `SoundShape`.
 
 **Note:** `eig.sample` comprises all vocalizations present in the samples of `centralis`, `cuvieri` and `kroyeri`, which led to three acoustic units per species; a total of nine `".wav"` files stored in the same folder. Use `help(eig.sample)` or check Rocha & Romano (*in prep*) for details. 
 
@@ -302,10 +304,10 @@ summary(pca.eig.sample)
 
 Before proceeding to the ordination of Principal Components (PCs), the eigensound protocol also includes hypothetical sound surfaces to be interpreted along with the ordination plots (MacLeod et al., 2013). These surfaces are calculated from the sample and represent the variation embedded in each PC axis, therefore enhancing the visualization and comprehension on how sound shape changed along each of the PC scores.
 
-In `SoundShape` package, the hypothetical sound shapes can be created using `hypo.surf` function, which enables the calculation of either the mean shape configuration from the sample (*i.e.* consensus shape; Zelditch et al., 2012), or minimum and maximum deformations relative to PCs, as exemplified below:
+In `SoundShape` package, the hypothetical sound shapes can be created using `hypo.surf` function (Figs. 9 -- 11), which enables the calculation of either the mean shape configuration from the sample (*i.e.* consensus shape; Zelditch et al., 2012), or minimum and maximum deformations relative to PCs, as exemplified below:
 
 ```{r Fig9-mean-surface, fig.align='center', fig.height=3, fig.width=7.2}
-# Export hypothetical sound surfaces using hypo.surf
+# Hypothetical sound surfaces using hypo.surf
 
 # Mean shape configuration (consensus)
 hypo.surf(eig.sample,  PC="mean", flim=c(0, 4), tlim=c(0, 0.8), x.length=70, y.length=47,
@@ -330,9 +332,9 @@ hypo.surf(eig.sample, PC=2, flim=c(0, 4), tlim=c(0, 0.8), x.length=70, y.length=
 
 ### 6.2 Ordination plot with `pca.plot` function
 
-Among the benefits of employing a PCA on multivariate data is the possibility to generate ordination plots encompassing the majority of variation embeeded in the sample (Fig. 12). These plots simplify description and are widely employed in exploratory data analysis, specially when one is looking for potential groups within the sample  (Zelditch et al. 2012).
+Among the benefits of employing a PCA on multivariate data is the possibility to generate ordination plots encompassing the majority of variation embeeded in the sample. These plots simplify description and are widely employed in exploratory data analysis, specially when one is looking for potential groups within the sample  (Zelditch et al. 2012).
 
-The ordination plot is facilitated by `pca.plot` function (`SoundShape` package), which require the output of a PCA performed by `prcomp` function (`stats` package) and a vector with `groups` to be colored. 
+The ordination plot is facilitated by `pca.plot` function (`SoundShape` package), which require the output of a PCA performed by `prcomp` function (`stats` package) and a vector with `groups` to be colored  (Fig. 12). 
 
 The code chunk below exemplifies how create an ordination plot using `pca.plot`:
 
