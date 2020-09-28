@@ -31,8 +31,8 @@ threeDspectro(
   rotate.Yaxis = 40,
   main = "Spectrogram 3D",
   scalelab = expression("Amplitude (dB)"),
-  colkey = list(plot = TRUE, cex.clab = 0.8, cex.axis = 1, side = 4, length = 1, width =
-    1, labels = TRUE, tick = TRUE, lty = 1, lwd = 1, lwd.ticks = 1)
+  colkey = list(plot = TRUE, cex.clab = 0.8, cex.axis = 1, side = 4, length = 1, width
+    = 1, labels = TRUE, tick = TRUE, lty = 1, lwd = 1, lwd.ticks = 1)
 )
 }
 \arguments{

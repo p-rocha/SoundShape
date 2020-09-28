@@ -97,6 +97,7 @@ In order to store the results from \code{eigensound} function and proceed with t
 Additionally, one may also export 2D or 3D plots as \code{jpeg} (compressed image) or \code{tiff} (uncompressed image) file formats, which can be edited for publication purposes.
 }
 \examples{
+\dontrun{
 library(seewave)
 library(tuneR)
 
@@ -118,7 +119,6 @@ writeWave(cut.cuvieri, filename = file.path(wav.at, "cut.cuvieri.wav"), extensib
 writeWave(cut.centralis, filename = file.path(wav.at, "cut.centralis.wav"), extensible = FALSE)
 writeWave(cut.kroyeri, filename = file.path(wav.at, "cut.kroyeri.wav"), extensible = FALSE)
 
-\dontrun{
 # Create 2D spectrograms using analysis.type = "twoDshape"
 eigensound(analysis.type = "twoDshape", flim=c(0, 4), tlim=c(0, 0.8),
            plot.exp=TRUE, wav.at = wav.at, store.at = store.at)

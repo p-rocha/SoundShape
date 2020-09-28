@@ -4,9 +4,11 @@
 \name{eig.sample}
 \alias{eig.sample}
 \title{Sample of 3D point coordinates (semilandmarks) acquired with \code{eigensound} function}
-\format{An object of the class \code{"array"} (\code{\link{base}} package).
+\format{
+An object of the class \code{"array"} (\code{\link{base}} package).
 
-\code{"array"} is a special type of \code{"list"} that can be thought as a filing cabinet, in which the \code{array} is the cabinet and each element is an arquive. This special \code{list} can be used in the subsequent steps of the eigensound protocol (MacLeod et al., 2013; Rocha & Romano \emph{in prep}).}
+\code{"array"} is a special type of \code{"list"} that can be thought as a filing cabinet, in which the \code{array} is the cabinet and each element is an arquive. This special \code{list} can be used in the subsequent steps of the eigensound protocol (MacLeod et al., 2013; Rocha & Romano \emph{in prep}).
+}
 \source{
 Sample data of \code{"Wave"} objects employed on \code{eigensound} analysis:
 \itemize{

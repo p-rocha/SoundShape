@@ -4,7 +4,9 @@
 \name{centralis}
 \alias{centralis}
 \title{Vocalization of the frog \emph{Physalaemus centralis}}
-\format{An object of the class \code{"Wave"} (\code{\link{tuneR}} package).}
+\format{
+An object of the class \code{"Wave"} (\code{\link{tuneR}} package).
+}
 \source{
 Original recording housed at Fonoteca Neotropical Jacques Vielliard (FNJV-0031188). Recorded by Adão José Cardoso.
 }

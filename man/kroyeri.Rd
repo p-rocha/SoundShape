@@ -4,7 +4,9 @@
 \name{kroyeri}
 \alias{kroyeri}
 \title{Vocalization of the frog \emph{Physalaemus kroyeri}}
-\format{An object of the class \code{"Wave"} (\code{\link{tuneR}} package).}
+\format{
+An object of the class \code{"Wave"} (\code{\link{tuneR}} package).
+}
 \source{
 Original recording housed at Fonoteca Neotropical Jacques Vielliard (FNJV-0032047). Recorded by Werner Bokermann.
 }

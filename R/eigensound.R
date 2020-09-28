@@ -60,6 +60,7 @@
 #'   \item{Report bugs at \url{https://github.com/p-rocha/SoundShape/issues}}}
 #'
 #' @examples
+#' \dontrun{
 #' library(seewave)
 #' library(tuneR)
 #'
@@ -81,7 +82,6 @@
 #' writeWave(cut.centralis, filename = file.path(wav.at, "cut.centralis.wav"), extensible = FALSE)
 #' writeWave(cut.kroyeri, filename = file.path(wav.at, "cut.kroyeri.wav"), extensible = FALSE)
 #'
-#' \dontrun{
 #' # Create 2D spectrograms using analysis.type = "twoDshape"
 #' eigensound(analysis.type = "twoDshape", flim=c(0, 4), tlim=c(0, 0.8),
 #'            plot.exp=TRUE, wav.at = wav.at, store.at = store.at)

@@ -16,10 +16,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r Fig0, out.width="250px", out.height="250px", fig.align='center', echo=FALSE}
-knitr::include_graphics("Fig0_logo.jpg") 
-```
-
 # Welcome to `SoundShape`
 
 Here, you will find information on how to implement a promising, and yet little explored method for biacoustical analysis: the so called *eigensound* analysis developed by [MacLeod, Krieger and Jones (2013)](http://www.italian-journal-of-mammalogy.it/Geometric-Morphometric-Approaches-to-Acoustic-Signal-Analysis-in-Mammalian-Biology,77249,0,2.html).
