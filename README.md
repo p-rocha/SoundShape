@@ -1,4 +1,3 @@
-<img align="right" height="300" width="300" src="vignettes/Fig0_logo.jpg" />
 
 # Welcome to `SoundShape`
 
