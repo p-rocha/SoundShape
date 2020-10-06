@@ -1,22 +1,23 @@
 ---
-title: "Getting started with `SoundShape` package"
-author: "Pedro Rocha"
-date: "October 2020"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Getting-started}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+output: github_document
 ---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
 )
 ```
 
+
 # Welcome to `SoundShape`
+
+<!-- badges: start -->
+<!-- badges: end -->
 
 Here, you will find information on how to implement a promising, and yet little explored method for biacoustical analysis: the so called *eigensound* analysis developed by [MacLeod, Krieger and Jones (2013)](http://www.italian-journal-of-mammalogy.it/Geometric-Morphometric-Approaches-to-Acoustic-Signal-Analysis-in-Mammalian-Biology,77249,0,2.html).
 
