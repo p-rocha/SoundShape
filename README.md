@@ -10,7 +10,7 @@
 Here, you will find information on how to implement a promising, and yet
 little explored method for biacoustical analysis: the so called
 *eigensound* analysis developed by [MacLeod, Krieger and Jones
-(2013)](http://www.italian-journal-of-mammalogy.it/Geometric-Morphometric-Approaches-to-Acoustic-Signal-Analysis-in-Mammalian-Biology,77249,0,2.html).
+(2013)](https://doi.org/10.4404/hystrix-24.1-6299).
 
 Eigensound is a multidisciplinary method focused on the direct
 comparison between homologous sounds from different species (*i.e.*
@@ -28,12 +28,11 @@ package was written on [R platform](https://www.r-project.org/) to fill
 this applicability gap. The package features functions that enable
 anyone familiar with `R` to easily go from sound waves to principal
 components analysis (PCA), using tools extracted from traditional
-bioacoustics (*i.e.*
-[tuneR](https://cran.r-project.org/web/packages/tuneR/index.html) and
-[seewave](http://rug.mnhn.fr/seewave/) packages), geometric
-morphometrics (*i.e.*
-[geomorph](https://cran.r-project.org/web/packages/geomorph/index.html)
-package) and multivariate analysis (*e.g.*
+bioacoustics (*i.e.* [tuneR](https://CRAN.R-project.org/package=tuneR)
+and [seewave](https://CRAN.R-project.org/package=seewave) packages),
+geometric morphometrics (*i.e.*
+[geomorph](https://CRAN.R-project.org/package=geomorph) package) and
+multivariate analysis (*e.g.*
 [stats](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/00Index.html)
 package).
 
@@ -90,7 +89,7 @@ package.
 platform](https://www.r-project.org/) as a development version from
 [GitHub](https://github.com/). In order to download it, make sure to
 have already installed an updated `R` version (3.3.1 or above) and
-[devtools](https://www.rstudio.com/products/rpackages/devtools) package.
+[devtools](https://CRAN.R-project.org/package=devtools) package.
 
 ``` r
 # install.packages("devtools")
@@ -222,9 +221,9 @@ The selection can be performed on numerous softwares of acoustic
 analysis outside `R` platform (*e.g.*
 [Audacity](https://www.audacityteam.org/), [Raven
 Pro](http://ravensoundsoftware.com/software/raven-pro/)), or using some
-functions from [seewave](http://rug.mnhn.fr/seewave/) and
-[tuneR](https://cran.r-project.org/web/packages/tuneR/index.html)
-packages as exemplified below:
+functions from [seewave](https://CRAN.R-project.org/package=seewave) and
+[tuneR](https://CRAN.R-project.org/package=tuneR) packages as
+exemplified below:
 
 ``` r
 # Select acoustic units
@@ -471,8 +470,8 @@ summary(pca.eig.sample)
 **Note:** At this point, consider employing a stopping rule to select
 which PCs should be retained as nontrivial and interpretable, and which
 ones should be ignored (*e.g.* broken stick models,
-[vegan](http://cc.oulu.fi/~jarioksa/softhelp/vegan/html/screeplot.cca.html)
-package) (Jackson, 1993; see Rocha & Romano *in prep* for details).
+[vegan](https://CRAN.R-project.org/package=vegan) package) (Jackson,
+1993; see Rocha & Romano *in prep* for details).
 
 ### 8.1 Hypothetical sound shape configurations from semilandmark data
 
@@ -599,7 +598,8 @@ A comparison of heuristical and statistical approaches. *Ecology,
 
 MacLeod, N., Krieger, J. & Jones, K. E. (2013). Geometric morphometric
 approaches to acoustic signal analysis in mammalian biology. *Hystrix,
-the Italian Journal of Mammalogy, 24*(1), 110-125.
+the Italian Journal of Mammalogy, 24*(1), 110-125. doi:
+10.4404/hystrix-24.1-6299
 
 Rocha, P. & Romano, P. (*in prep*) The shape of sound: A new `R` package
 that crosses the bridge between Bioacoustics and Geometric
