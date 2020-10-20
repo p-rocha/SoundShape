@@ -17,7 +17,7 @@
 #' @param ovlp overlap between two successive windows (in %) for increased spectrogram resolution. Should be the same employed on \code{eigensound(analysis.type="threeDshape")}. By default: \code{ovlp = 70}
 #' @param plot.exp a logical. If \code{TRUE}, exports the 3D output plot containing mean shape (\code{PC = "mean"}), or minimum and maximum deformations for the desired Principal Component (e.g. \code{PC = 1}). Exported plot will be stored on the folder indicated by \code{store.at}. By default: \code{plot.exp = FALSE}
 #' @param plot.as only applies when \code{plot.exp = TRUE}. \code{plot.as = "jpeg"} will generate compressed images for quick inspection; \code{plot.as = "tiff"} or \code{"tif"} will generate uncompressed high resolution images that can be edited and used for publication. By default: \code{plot.as = "jpeg"}
-#' @param store.at only applies when \code{plot.exp = TRUE}. Filepath to the folder where output plots will be stored. Should be presented between quotation marks. By default: \code{store.at = getwd()} (i.e. use current working directory)
+#' @param store.at only applies when \code{plot.exp = TRUE}. Filepath to the folder where output plots will be stored. Should be presented between quotation marks. By default: \code{store.at = NULL} (i.e. user must specify the filepath where plots of hypothetical sound surfaces will be stored)
 #' @param rotate.Xaxis rotation of the X-axis. Same as \code{theta} from \code{\link{persp3D}} (\code{\link{plot3D}} package). By default: \code{rotate.Xaxis = 60}
 #' @param rotate.Yaxis rotation of the Y-axis. Same as \code{phi} from \code{\link{persp3D}} (\code{\link{plot3D}} package). By default: \code{rotate.Yaxis = 40}
 #' @param cex.axis similarly as in \code{\link{par}}, magnification to be used for axis values. By default: \code{cex.axis = 0.9}
@@ -71,7 +71,7 @@
 #'
 #' @export
 #'
-hypo.surf <- function(threeD.out=NULL, PC=1, flim=c(0, 4), tlim=c(0, 0.8), x.length=70, y.length=47, log.scale=TRUE, f=44100, wl=512, ovlp=70, plot.exp=FALSE, plot.as="jpeg", store.at = getwd(), rotate.Xaxis=60, rotate.Yaxis=40, cex.axis=0.5, cex.lab=0.9, cex.main=1.1, lwd=0.1, xlab="Time coordinates", ylab="Frequency coordinates", zlab="Amplitude", colkey = list(plot = TRUE, cex.clab = 0.9, cex.axis = 0.8, side = 4, length = 0.5, width = 0.7, labels = TRUE, tick = TRUE, lty = 1, lwd = 1, lwd.ticks = 1))
+hypo.surf <- function(threeD.out=NULL, PC=1, flim=c(0, 4), tlim=c(0, 0.8), x.length=70, y.length=47, log.scale=TRUE, f=44100, wl=512, ovlp=70, plot.exp=FALSE, plot.as="jpeg", store.at = NULL, rotate.Xaxis=60, rotate.Yaxis=40, cex.axis=0.5, cex.lab=0.9, cex.main=1.1, lwd=0.1, xlab="Time coordinates", ylab="Frequency coordinates", zlab="Amplitude", colkey = list(plot = TRUE, cex.clab = 0.9, cex.axis = 0.8, side = 4, length = 0.5, width = 0.7, labels = TRUE, tick = TRUE, lty = 1, lwd = 1, lwd.ticks = 1))
 {
 
   if(is.null(threeD.out))
@@ -79,6 +79,9 @@ hypo.surf <- function(threeD.out=NULL, PC=1, flim=c(0, 4), tlim=c(0, 0.8), x.len
 
   if(is.null(PC))
   {stop('Choose a Principal Component or "mean" shape configuration to generate hypothetical semilandmark configurations. See help(hypo.surf) for details.')}
+
+  if(plot.exp == TRUE && is.null(store.at)){
+    stop("Use 'store.at' to specify folder path where plots of hypothetical sound surfaces will be stored")}
 
   ref = geomorph::mshape(threeD.out)
 
@@ -106,6 +109,10 @@ hypo.surf <- function(threeD.out=NULL, PC=1, flim=c(0, 4), tlim=c(0, 0.8), x.len
 
       # Export plot
       if(plot.exp==TRUE){
+
+        oldpar <- graphics::par(no.readonly = TRUE)
+        base::on.exit(graphics::par(oldpar))
+
         if(plot.as == "jpeg"){
           grDevices::jpeg(width=4000,height=3500,units="px",res=500,
                           filename=paste(store.at,"/", "Hypothetical surfaces - Mean shape", ".jpg", sep=""))} # compressed images

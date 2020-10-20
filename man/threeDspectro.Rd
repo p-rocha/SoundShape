@@ -19,7 +19,7 @@ threeDspectro(
   cex.axis = 0.5,
   cex.lab = 0.9,
   cex.main = 1,
-  store.at = getwd(),
+  store.at = NULL,
   plot.as = "jpeg",
   color = seewave::spectro.colors(80),
   f = 44100,
@@ -64,7 +64,7 @@ threeDspectro(
 
 \item{cex.main}{Similarly as in \code{\link{par}}, the magnification to be used for main titles. By default: \code{cex.main = 1}}
 
-\item{store.at}{only applies when \code{plot.exp = TRUE}. Filepath to the folder where 3D plot will be stored. Should be presented between quotation marks. By default: \code{store.at = getwd()} (i.e. use current working directory)}
+\item{store.at}{only applies when \code{plot.exp = TRUE}. Filepath to the folder where 3D plot will be stored. Should be presented between quotation marks. By default: \code{store.at = NULL} (i.e. user must specify the filepath where spectrogram plots will be stored)}
 
 \item{plot.as}{only applies when \code{plot.exp = TRUE}. \code{plot.as = "jpeg"} will generate compressed images for quick inspection; \code{plot.as = "tiff"} or \code{"tif"} will generate uncompressed high resolution images that can be edited and used for publication. By default: \code{plot.as = "jpeg"}}
 
@@ -99,8 +99,9 @@ This function works similarly as \code{\link{spectro}} (\code{\link{seewave}} pa
 Similarly as \code{\link{spectro}} (\code{\link{seewave}} package), any colour pallete can be used to describe the amplitude (Z-axis). Some suggestions: \code{seewave::temp.colors, seewave::spectro.colors, seewave::reverse.heat.colors, seewave::reverse.cm.colors, seewave::reverse.topo.colors, grDevices::cm.colors, grDevices::grey.colors, grDevices::heat.colors, grDevices::topo.colors}.
 }
 \examples{
-\dontrun{
-#' # As simple as this
+
+\donttest{
+# As simple as this
 threeDspectro(centralis)
 threeDspectro(cuvieri)
 threeDspectro(kroyeri)
@@ -122,7 +123,7 @@ threeDspectro(cuvieri, color=grDevices::heat.colors(80),
 threeDspectro(cuvieri, tlim=c(0, 0.5), flim=c(0, 4), rotate.Xaxis=40, rotate.Yaxis=50)
 
 # Export your graph
-threeDspectro(cuvieri, plot.exp=TRUE, samp.grid=FALSE, tlim=c(0, 0.5), flim=c(0, 4))
+threeDspectro(cuvieri, plot.exp=TRUE, store.at=tempdir(), tlim=c(0,0.5), flim=c(0,4))
 }
 
 }

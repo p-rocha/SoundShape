@@ -19,7 +19,7 @@
 #' @param cex.main Similarly as in \code{\link{par}}, the magnification to be used for main titles. By default: \code{cex.main = 1}
 #' @param lwd only applies when \code{samp.grid = TRUE} and \code{plot.type = "surface"}. Similarly as in \code{\link{par}}, intended line width for sampling grid. By default: \code{lwd = 0.1}
 #' @param plot.exp a logical. If \code{TRUE}, 3D spectrogram plot from \code{wave} object is exported and stored on the folder indicated by \code{store.at}. By default: \code{plot.exp = FALSE}
-#' @param store.at only applies when \code{plot.exp = TRUE}. Filepath to the folder where 3D plot will be stored. Should be presented between quotation marks. By default: \code{store.at = getwd()} (i.e. use current working directory)
+#' @param store.at only applies when \code{plot.exp = TRUE}. Filepath to the folder where 3D plot will be stored. Should be presented between quotation marks. By default: \code{store.at = NULL} (i.e. user must specify the filepath where spectrogram plots will be stored)
 #' @param plot.as only applies when \code{plot.exp = TRUE}. \code{plot.as = "jpeg"} will generate compressed images for quick inspection; \code{plot.as = "tiff"} or \code{"tif"} will generate uncompressed high resolution images that can be edited and used for publication. By default: \code{plot.as = "jpeg"}
 #' @param color Color palette to be used for the amplitude (Z-axis). Same default as \code{\link{spectro}}: \code{color=spectro.colors(80)}. See also \code{Details} section.
 #' @param scalelab Similarly as \code{\link{plot3D}}, the label to be written on top of the color key. Should be a character string wrapped by \code{expression()}. By default: \code{scalelab = expression("Amplitude (dB)")}. See also \code{\link{colkey}}
@@ -54,8 +54,9 @@
 #'
 #'
 #' @examples
-#' \dontrun{
-#' #' # As simple as this
+#'
+#' \donttest{
+#' # As simple as this
 #' threeDspectro(centralis)
 #' threeDspectro(cuvieri)
 #' threeDspectro(kroyeri)
@@ -77,13 +78,16 @@
 #' threeDspectro(cuvieri, tlim=c(0, 0.5), flim=c(0, 4), rotate.Xaxis=40, rotate.Yaxis=50)
 #'
 #' # Export your graph
-#' threeDspectro(cuvieri, plot.exp=TRUE, samp.grid=FALSE, tlim=c(0, 0.5), flim=c(0, 4))
+#' threeDspectro(cuvieri, plot.exp=TRUE, store.at=tempdir(), tlim=c(0,0.5), flim=c(0,4))
 #' }
 #'
 #' @export
 #'
-threeDspectro <-  function (wave, tlim = NULL, flim = NULL, samp.grid = FALSE, plot.type = "surface", x.length=100, y.length=70, lwd=0.1, plot.exp=FALSE, log.scale = FALSE, cex = 0.5, cex.axis=0.5, cex.lab=0.9, cex.main=1, store.at = getwd(), plot.as = "jpeg", color = seewave::spectro.colors(80), f = 44100, wl = 512, ovlp = 70, dBlevel = 30, resfac = 1, rotate.Xaxis = 60, rotate.Yaxis = 40, main = "Spectrogram 3D", scalelab=expression("Amplitude (dB)"), colkey = list(plot = TRUE, cex.clab = 0.8, cex.axis = 1, side = 4, length = 1, width = 1, labels = TRUE, tick = TRUE, lty = 1, lwd = 1, lwd.ticks = 1))
+threeDspectro <-  function (wave, tlim = NULL, flim = NULL, samp.grid = FALSE, plot.type = "surface", x.length=100, y.length=70, lwd=0.1, plot.exp=FALSE, log.scale = FALSE, cex = 0.5, cex.axis=0.5, cex.lab=0.9, cex.main=1, store.at = NULL, plot.as = "jpeg", color = seewave::spectro.colors(80), f = 44100, wl = 512, ovlp = 70, dBlevel = 30, resfac = 1, rotate.Xaxis = 60, rotate.Yaxis = 40, main = "Spectrogram 3D", scalelab=expression("Amplitude (dB)"), colkey = list(plot = TRUE, cex.clab = 0.8, cex.axis = 1, side = 4, length = 1, width = 1, labels = TRUE, tick = TRUE, lty = 1, lwd = 1, lwd.ticks = 1))
   {
+
+  if(plot.exp == TRUE && is.null(store.at)){
+    stop("Use 'store.at' to specify folder path where 3D spectrogram plots will be stored")}
 
   # Acquire spectrogram data
   s <- seewave::spectro(wave, plot=F, f=f, wl=wl, ovlp=ovlp, tlim=tlim, flim=flim)

@@ -2,7 +2,7 @@
 #'
 #' @description Recreate each \code{".wav"} file on a given folder while placing calls at the beggining of sound window. New \code{".wav"} files will be stored on a new folder, which is automatically created.
 #'
-#' @param wav.at filepath to the folder where \code{".wav"} files are stored. Should be presented between quotation marks. By default: \code{wav.at = getwd()} (i.e. use current working directory)
+#' @param wav.at filepath to the folder where \code{".wav"} files are stored. Should be presented between quotation marks. By default: \code{wav.at = NULL} (i.e. user must specify the filepath to \code{".wav"} files)
 #' @param wav.to name of the folder where new \code{".wav"} files will be stored. Should be presented between quotation marks. By default: \code{wav.to = "Aligned"}
 #' @param time.length intended length for the time (X-axis) in seconds. Should be a value that encompasses all sounds in the study. By default: \code{time.length = 1}
 #' @param time.perc slight time gap (in percentage) relative to the intended length that encompass all sounds in the study (i.e. \code{time.length}). Intervals are added before and after the minimum and maximum time coordinates (X-values) from the selected curve of relative amplitude (\code{dBlevel}). By default: \code{time.perc = 0.005} (i.e. 0.5%)
@@ -23,17 +23,17 @@
 #'   \item{Report bugs at \url{https://github.com/p-rocha/SoundShape/issues}}}
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' library(seewave)
 #' library(tuneR)
 #'
-#' # Create folder at current working directory to store ".wav" files
-#' wav.at <- file.path(getwd(), "example align.wave")
-#' dir.create(wav.at)
+#' # Create temporary folder to store ".wav" files
+#' wav.at <- file.path(base::tempdir(), "align.wave")
+#' if(!dir.exists(wav.at)) dir.create(wav.at)
 #'
-#' # Create folder to store results
-#' store.at <- file.path(getwd(), "example align.wave/output")
-#' dir.create(store.at)
+#' # Create temporary folder to store results
+#' store.at <- file.path(base::tempdir(), "align.wave-output")
+#' if(!dir.exists(store.at)) dir.create(store.at)
 #'
 #' # Select acoustic units to be analyzed
 #' data(cuvieri)
@@ -57,6 +57,7 @@
 #' eigensound(analysis.type = "twoDshape", wav.at = file.path(wav.at, "Aligned"), store.at = store.at,
 #'            flim=c(0, 3), tlim=c(0,0.5), dBlevel = 25, plot.exp = TRUE, plot.as = "jpeg")
 #' # To see jpeg files created, check folder specified by store.at
+#'
 #' }
 #'
 #' @references
@@ -67,7 +68,9 @@
 #'
 #' @export
 #'
-align.wave <- function(wav.at=getwd(), wav.to="Aligned", time.length=1, time.perc=0.005, dBlevel=25, f=44100, wl=512, ovlp=70)  {
+align.wave <- function(wav.at=NULL, wav.to="Aligned", time.length=1, time.perc=0.005, dBlevel=25, f=44100, wl=512, ovlp=70)  {
+
+  if(is.null(wav.at)) {stop("Use 'wav.at' to specify folder path where '.wav' files are stored")}
 
   # Create folder to store aligned calls
   if(!dir.exists(file.path(wav.at, wav.to))) dir.create(file.path(wav.at, wav.to))

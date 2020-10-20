@@ -16,6 +16,10 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r, include = FALSE}
+oldpar <- graphics::par(no.readonly = TRUE)
+```
+
 # Welcome to `SoundShape`
 
 Here, you will find information on how to implement a promising, and yet little explored method for biacoustical analysis: the so called *eigensound* analysis developed by [MacLeod, Krieger and Jones (2013)](https://doi.org/10.4404/hystrix-24.1-6299).
@@ -49,6 +53,11 @@ threeDspectro(cuvieri.cut, flim=c(0, 2.5), plot.type="points",
 
 ```
 
+
+```{r, include = FALSE}
+graphics::par(oldpar)
+```
+
 **Figure 1:** Graphical outputs using `threeDspectro` function from `SoundShape` package: (left) 3D spectrogram and (right) points (*i.e.* semilandmarks) sampled from 3D spectrogram data. `cuvieri` sample from `SoundShape` package. 
 
 ```{r Fig2-2D-spectros, fig.align='center', fig.width=7.2, fig.height=3.5}
@@ -56,6 +65,10 @@ threeDspectro(cuvieri.cut, flim=c(0, 2.5), plot.type="points",
 par(mfrow=c(1,2), mar=c(4,4,2,1)) # view side by side
 seewave::oscillo(cuvieri.cut, title="Oscillogram")
 seewave::spectro(cuvieri.cut, flim=c(0, 2.5), grid=FALSE, scale=FALSE, main="Spectrogram")
+```
+
+```{r, include = FALSE}
+graphics::par(oldpar)
 ```
 
 **Figure 2:** Graphical outputs using `seewave` package: (left) Oscillogram created with `oscillo` function and (right) 2D spectrogram created with `spectro` function. `cuvieri` sample from `SoundShape` package. 
@@ -121,13 +134,13 @@ graphics::abline(v=c(0.16, 0.96, 1.55, 2.35, 2.9, 3.8), lty=2)
 Alternatively, the codes below can be used to create a folder at *e.g.* the current working directory, and a subfolder to store the upcoming outputs from `eigensound`:
   
 ```r
-# Create folder to store ".wav" files
-wav.at <- file.path(getwd(), "example SoundShape")
-dir.create(wav.at)
+# Create temporary folder to store ".wav" files
+wav.at <- file.path(base::tempdir(), "original wave")
+if(!dir.exists(wav.at)) dir.create(wav.at)
 
-# Create subfolder to store results
-store.at <- file.path(getwd(), "example SoundShape/output")
-dir.create(store.at)
+# Create temporary folder to store results
+store.at <- file.path(base::tempdir(), "output")
+if(!dir.exists(store.at)) dir.create(store.at)
 ```
 
 ## 3. Select and store acoustic units as separate `".wav"` files
@@ -170,6 +183,10 @@ seewave::spectro(cut.cuvieri, flim=c(0, 4), tlim=c(0, 0.8), main="data(cuvieri)"
                  wl=512, f=44100, ovlp=70, grid=FALSE, scale=FALSE)
 seewave::spectro(cut.kroyeri, flim=c(0, 4), tlim=c(0, 0.8), main="data(kroyeri)", 
                  wl=512, f=44100, ovlp=70, grid=FALSE, scale=FALSE)
+```
+
+```{r, include = FALSE}
+graphics::par(oldpar)
 ```
 
 **Figure 6:** Spectrogram images with standardized sound window dimensions. 
@@ -229,6 +246,10 @@ plot3D::contour3D(x=s.kro$time, y=s.kro$freq, colvar=t(s.kro$amp), z=-25,
                   plot=T, add=T, addbox=F, col="black", lwd=1.9, nlevels=2, dDepth=0.25)
 ```
 
+```{r, include = FALSE}
+graphics::par(oldpar)
+```
+
 **Figure 7:** 2D and 3D spectrograms (left and right, respectively) with relative amplitude contours highlighted by black lines (`dBlevel = 25`). Spectrogram images from `kroyeri` sample.
 
 
@@ -252,6 +273,10 @@ threeDspectro(cut.kroyeri, samp.grid=TRUE, x.length=70, y.length=47, plot.type="
               dBlevel=25, flim=c(0, 4), tlim=c(0, 0.8), f=44100, wl=512, ovlp=70, main="As 'points'",
               colkey=list(plot=FALSE), cex.axis=0.4, cex.lab=0.8)
 
+```
+
+```{r, include = FALSE}
+graphics::par(oldpar)
 ```
 
 **Figure 8:** Spectrogram data as (left) simplified surface, and (right) colored semilandmarks acquired from the intersections of sampling grid (*i.e.* `x.length=70` and ` y.length=47`). Spectrogram images from `kroyeri` sample.

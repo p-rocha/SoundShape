@@ -35,7 +35,6 @@ The analysis itself (\code{\link{eigensound}} function) featured relative amplit
 Spectrogram parameters were the same as \code{eigensound} default: \code{f = 44100}, \code{wl = 512}, \code{ovlp = 70}.
 }
 \examples{
-\dontrun{
 data(eig.sample)
 
 # PCA using 3D semilandmark coordinates
@@ -46,9 +45,6 @@ dimnames(eig.sample)[[3]]
 
 # Create factor to use as groups in subsequent ordination plot
 sample.gr <- factor(c(rep("centralis", 3), rep("cuvieri", 3), rep("kroyeri", 3)))
-
-# Clear current R plot to prevent errors
-grDevices::dev.off()
 
 # Plot result of Principal Components Analysis
 pca.plot(PCA.out = pca.eig.sample, groups = sample.gr, conv.hulls = sample.gr,
@@ -63,16 +59,17 @@ hypo.surf(threeD.out=eig.sample, PC=1, flim=c(0, 4), tlim=c(0, 0.8),
 #                      Recreate eig.sample object                        #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
+\donttest{
 library(seewave)
 library(tuneR)
 
-# Create folder at current working directory to store wave files
-wav.at <- file.path(getwd(), "example eigensound")
-dir.create(wav.at)
+# Create temporary folder to store ".wav" files
+wav.at <- file.path(base::tempdir(), "eig.sample")
+if(!dir.exists(wav.at)) dir.create(wav.at)
 
-# Create folder to store results
-store.at <- file.path(getwd(), "example eigensound/output")
-dir.create(store.at)
+# Create temporary folder to store results
+store.at <- file.path(base::tempdir(), "eig.sample-output")
+if(!dir.exists(store.at)) dir.create(store.at)
 
 # Select three acoustic units within each sound data
 data(cuvieri)
@@ -121,6 +118,7 @@ eig.sample <- eigensound(analysis.type="threeDshape", wav.at = file.path(wav.at,
                          x.length=70, y.length = 47, log.scale = TRUE)
 
 }
+
 
 }
 \keyword{datasets}

@@ -5,8 +5,8 @@
 #' Moreover, \code{eigensound} also allow its user to export 2D and 3D spectrogram images (\code{plot.exp = TRUE}) that are helpful during the protocol for error verification and for illustrative purposes (see Rocha & Romano \emph{in prep}). Alternativaly, \code{eigensound} feature the option of acquiring semilandmarks as the cross-correlation between energy quantiles and a curve of relative amplitude from 2D spectrograms (\code{analysis.type = "twoDshape"}; see \code{Details} section).
 #'
 #' @param analysis.type type of analysis intended. If \code{analysis.type = "threeDshape"}, semilandmarks are acquired from spectrogram data using a 3D representation of sound (same as in MacLeod et al., 2013). If \code{analysis.type = "twoDshape"} and \code{add.points = TRUE}, semilandmarks are acquired using energy quantiles and a 2D curve of relative amplitude. By default: \code{analysis.type = NULL} (i.e. method must be specified before the analysis).
-#' @param wav.at filepath to the folder where \code{".wav"} files are stored. Should be presented between quotation marks. By default: \code{wav.at = getwd()} (i.e. use current working directory)
-#' @param store.at filepath to the folder where spectrogram plots and \code{tps} file will be stored. Should be presented between quotation marks. By default: \code{store.at = getwd()} (i.e. use current working directory)
+#' @param wav.at filepath to the folder where \code{".wav"} files are stored. Should be presented between quotation marks. By default: \code{wav.at = NULL} (i.e. user must specify the filepath to \code{".wav"} files)
+#' @param store.at filepath to the folder where spectrogram plots and \code{tps} file will be stored. Should be presented between quotation marks. By default: \code{store.at = wav.at} (i.e. store outputs in the same folder as \code{".wav"} files)
 #' @param dBlevel absolute amplitude value to be used as relative amplitude contour, which will serve as reference for semilandmark acquisition in both \code{analysis.type = "threeDshape"} and \code{"twoDshape"}. By default: \code{dBlevel = 25}
 #' @param flim modifications of the frequency limits (Y-axis). Vector with two values in kHz. By default: \code{flim = c(0, 10)}
 #' @param tlim modifications of the time limits (X-axis). Vector with two values in seconds. By default: \code{tlim = c(0, 1)}
@@ -60,17 +60,16 @@
 #'   \item{Report bugs at \url{https://github.com/p-rocha/SoundShape/issues}}}
 #'
 #' @examples
-#' \dontrun{
 #' library(seewave)
 #' library(tuneR)
 #'
-#' # Create folder at current working directory to store ".wav" files
-#' wav.at <- file.path(getwd(), "example SoundShape")
-#' dir.create(wav.at)
+#' # Create temporary folder to store ".wav" files
+#' wav.at <- file.path(base::tempdir(), "eigensound")
+#' if(!dir.exists(wav.at)) dir.create(wav.at)
 #'
-#' # Create folder to store results
-#' store.at <- file.path(getwd(), "example SoundShape/output")
-#' dir.create(store.at)
+#' # Create temporary folder to store results
+#' store.at <- file.path(base::tempdir(), "eigensound-output")
+#' if(!dir.exists(store.at)) dir.create(store.at)
 #'
 #' # Cut acoustic units from original Wave
 #' cut.cuvieri <- cutw(cuvieri, f=44100, from=0, to=0.9, output = "Wave")
@@ -82,6 +81,8 @@
 #' writeWave(cut.centralis, filename = file.path(wav.at, "cut.centralis.wav"), extensible = FALSE)
 #' writeWave(cut.kroyeri, filename = file.path(wav.at, "cut.kroyeri.wav"), extensible = FALSE)
 #'
+#'
+#' \donttest{
 #' # Create 2D spectrograms using analysis.type = "twoDshape"
 #' eigensound(analysis.type = "twoDshape", flim=c(0, 4), tlim=c(0, 0.8),
 #'            plot.exp=TRUE, wav.at = wav.at, store.at = store.at)
@@ -93,9 +94,10 @@
 #'
 #' @export
 #'
-eigensound <- function(analysis.type = NULL, wav.at = getwd(), store.at = getwd(), dBlevel=25, flim=c(0, 10), tlim = c(0, 1), trel=tlim, x.length=80, y.length=60, log.scale=TRUE, back.amp=35, add.points=FALSE, add.contour=TRUE, lwd=1, EQ= c(0.05, 0.15, 0.3, 0.5, 0.7, 0.85, 0.95), mag.time=1, f=44100, wl=512, ovlp=70, plot.exp = TRUE, plot.as = "jpeg", plot.type = "surface", rotate.Xaxis=60, rotate.Yaxis=40, TPS.file = NULL){
+eigensound <- function(analysis.type = NULL, wav.at = NULL, store.at = wav.at, dBlevel=25, flim=c(0, 10), tlim = c(0, 1), trel=tlim, x.length=80, y.length=60, log.scale=TRUE, back.amp=35, add.points=FALSE, add.contour=TRUE, lwd=1, EQ= c(0.05, 0.15, 0.3, 0.5, 0.7, 0.85, 0.95), mag.time=1, f=44100, wl=512, ovlp=70, plot.exp = TRUE, plot.as = "jpeg", plot.type = "surface", rotate.Xaxis=60, rotate.Yaxis=40, TPS.file = NULL){
 
   # Invalid arguments
+  if(is.null(wav.at)) {stop("Use 'wav.at' to specify folder path where '.wav' files are stored")}
   if(is.null(analysis.type)) {stop("Method undefined in 'analysis.type'")}
   if(!is.null(analysis.type)){
     if(analysis.type != "threeDshape" && analysis.type != "twoDshape")

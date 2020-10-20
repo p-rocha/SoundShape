@@ -17,7 +17,7 @@ hypo.surf(
   ovlp = 70,
   plot.exp = FALSE,
   plot.as = "jpeg",
-  store.at = getwd(),
+  store.at = NULL,
   rotate.Xaxis = 60,
   rotate.Yaxis = 40,
   cex.axis = 0.5,
@@ -56,7 +56,7 @@ hypo.surf(
 
 \item{plot.as}{only applies when \code{plot.exp = TRUE}. \code{plot.as = "jpeg"} will generate compressed images for quick inspection; \code{plot.as = "tiff"} or \code{"tif"} will generate uncompressed high resolution images that can be edited and used for publication. By default: \code{plot.as = "jpeg"}}
 
-\item{store.at}{only applies when \code{plot.exp = TRUE}. Filepath to the folder where output plots will be stored. Should be presented between quotation marks. By default: \code{store.at = getwd()} (i.e. use current working directory)}
+\item{store.at}{only applies when \code{plot.exp = TRUE}. Filepath to the folder where output plots will be stored. Should be presented between quotation marks. By default: \code{store.at = NULL} (i.e. user must specify the filepath where plots of hypothetical sound surfaces will be stored)}
 
 \item{rotate.Xaxis}{rotation of the X-axis. Same as \code{theta} from \code{\link{persp3D}} (\code{\link{plot3D}} package). By default: \code{rotate.Xaxis = 60}}
 

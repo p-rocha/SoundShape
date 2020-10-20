@@ -5,7 +5,7 @@
 \title{Automatic placement of calls at beggining of sound window}
 \usage{
 align.wave(
-  wav.at = getwd(),
+  wav.at = NULL,
   wav.to = "Aligned",
   time.length = 1,
   time.perc = 0.005,
@@ -16,7 +16,7 @@ align.wave(
 )
 }
 \arguments{
-\item{wav.at}{filepath to the folder where \code{".wav"} files are stored. Should be presented between quotation marks. By default: \code{wav.at = getwd()} (i.e. use current working directory)}
+\item{wav.at}{filepath to the folder where \code{".wav"} files are stored. Should be presented between quotation marks. By default: \code{wav.at = NULL} (i.e. user must specify the filepath to \code{".wav"} files)}
 
 \item{wav.to}{name of the folder where new \code{".wav"} files will be stored. Should be presented between quotation marks. By default: \code{wav.to = "Aligned"}}
 
@@ -36,17 +36,17 @@ align.wave(
 Recreate each \code{".wav"} file on a given folder while placing calls at the beggining of sound window. New \code{".wav"} files will be stored on a new folder, which is automatically created.
 }
 \examples{
-\dontrun{
+\donttest{
 library(seewave)
 library(tuneR)
 
-# Create folder at current working directory to store ".wav" files
-wav.at <- file.path(getwd(), "example align.wave")
-dir.create(wav.at)
+# Create temporary folder to store ".wav" files
+wav.at <- file.path(base::tempdir(), "align.wave")
+if(!dir.exists(wav.at)) dir.create(wav.at)
 
-# Create folder to store results
-store.at <- file.path(getwd(), "example align.wave/output")
-dir.create(store.at)
+# Create temporary folder to store results
+store.at <- file.path(base::tempdir(), "align.wave-output")
+if(!dir.exists(store.at)) dir.create(store.at)
 
 # Select acoustic units to be analyzed
 data(cuvieri)
@@ -70,6 +70,7 @@ align.wave(wav.at = wav.at, wav.to = "Aligned",
 eigensound(analysis.type = "twoDshape", wav.at = file.path(wav.at, "Aligned"), store.at = store.at,
            flim=c(0, 3), tlim=c(0,0.5), dBlevel = 25, plot.exp = TRUE, plot.as = "jpeg")
 # To see jpeg files created, check folder specified by store.at
+
 }
 
 }
