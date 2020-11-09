@@ -1,6 +1,6 @@
 Package: SoundShape
 Title: Sound Waves Onto Morphometric Data
-Version: v1.0.9000
+Version: 1.0.9000
 Date: 2020-10-07
 Authors@R: c(
   person("Pedro", "Rocha", email="p.rocha1990@gmail.com", role = c("aut", "cre")),
