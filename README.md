@@ -3,9 +3,7 @@
 
 # Welcome to `SoundShape`
 
-<!-- badges: start -->
-
-<!-- badges: end -->
+[![DOI](https://zenodo.org/badge/298667332.svg)](https://zenodo.org/badge/latestdoi/298667332)
 
 Here, you will find information on how to implement a promising, and yet
 little explored method for biacoustical analysis: the so called
