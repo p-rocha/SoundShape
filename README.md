@@ -14,8 +14,8 @@ little explored method for biacoustical analysis: the so called
 
 Eigensound is a multidisciplinary method focused on the direct
 comparison between homologous sounds from different species (*i.e.*
-stereotyped calls/acoustic units; Macleod *et al.*, 2013; Rocha & Romano
-*in prep*). It consists on applying a sampling grid over the
+stereotyped calls/acoustic units; Macleod *et al.*, 2013; Rocha &
+Romano, 2021). It consists on applying a sampling grid over the
 representation of sound (*i.e.* spectrogram data; Figs. 1 and 2) and
 then translate the spectrogram into a dataset that can be analyzed
 similarly to coordinate sets used in Geometric Morphometrics Methods
@@ -44,6 +44,7 @@ here](https://github.com/p-rocha/SoundShape/issues).
 
 ``` r
 library(SoundShape)
+#> Warning: package 'SoundShape' was built under R version 4.0.3
 
 # Sample data from SoundShape
 data(cuvieri)
@@ -107,7 +108,7 @@ citation("SoundShape")
 #> To cite package 'SoundShape' in publications use:
 #> 
 #>   Pedro Rocha (2020). SoundShape: Sound Waves Onto Morphometric Data. R
-#>   package version 1.0. https://github.com/p-rocha/SoundShape
+#>   package version 1.0. https://CRAN.R-project.org/package=SoundShape
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -116,9 +117,17 @@ citation("SoundShape")
 #>     author = {Pedro Rocha},
 #>     year = {2020},
 #>     note = {R package version 1.0},
-#>     url = {https://github.com/p-rocha/SoundShape},
+#>     url = {https://CRAN.R-project.org/package=SoundShape},
 #>   }
 ```
+
+In addition, we recommend citing the paper *The shape of sound: A new R
+package that crosses the bridge between Bioacoustics and Geometric
+Morphometrics* (Rocha & Romano, 2021):
+
+  - Rocha, P. & Romano, P. (2021) The shape of sound: A new R package
+    that crosses the bridge between Bioacoustics and Geometric
+    Morphometrics. *Methods in Ecology and Evolution*.
 
 # Workflow using `SoundShape` package
 
@@ -129,10 +138,10 @@ foremost step in sound shape study is the careful definition of units
 from which analysis will be conducted. Although there is no universal
 concept of a homologous unit of biological sound encompassing the
 majority of calling organisms, each higher taxon has its own approaches
-for homologous sound comparison (see Rocha & Romano *in prep* for
-details on homology between units). Herein, we focus on stereotyped
-calls from three frog species: *Physalaemus centralis*, *P. cuvieri* and
-*P. kroyeri* (`centralis`, `cuvieri` and `kroyeri` sample datas,
+for homologous sound comparison (see Rocha & Romano, 2021 for details on
+homology between units). Herein, we focus on stereotyped calls from
+three frog species: *Physalaemus centralis*, *P. cuvieri* and *P.
+kroyeri* (`centralis`, `cuvieri` and `kroyeri` sample datas,
 respectively; Figs. 3 – 5). When dealing with real-life data, undertake
 literature research before defining the comparable acoustic units.
 
@@ -244,7 +253,7 @@ writeWave(cut.kroyeri, filename = file.path(wav.at, "cut.kroyeri.wav"), extensib
 In order to secure a meaningful comparison of sound waves through
 semilandmark acquisition, eigensound analysis requires some
 standardization to `".wav"` files that would otherwise lead to errors or
-biased results (MacLeod et al., 2013; Rocha & Romano in prep).
+biased results (MacLeod et al., 2013; Rocha & Romano, 2021).
 
 First, define the sound window dimensions that encompass the whole
 sample of acoustic units. These dimensions are represented by the time
@@ -294,8 +303,8 @@ Pro](http://ravensoundsoftware.com/software/raven-pro/)), `align.wave`
 function (`SoundShape` package) provide an easy alternative to
 automatically align the units at the beginning of a sound window whilst
 also standardizing the durations of `".wav"` files (see section 4.1).
-This prevents errors when running `eigensound` function (Rocha & Romano
-*in prep*).
+This prevents errors when running `eigensound` function (Rocha & Romano,
+2021).
 
 In order to verify the alignment, run `eigensound` with `analysis.type =
 "twoDshape"` and `plot.exp = TRUE`, which will create 2D spectrogram
@@ -321,7 +330,7 @@ If either the alignment, or the sound window dimensions, are not ideal
 (*e.g.* units far from the beginning of sound window; sounds overlapping
 the edges of sound window), run `align.wave` with different values of
 `time.length` and/or `time.perc`, then use `eigensound` to verify the
-updated spectrogram outputs (see Rocha & Romano *in prep* for details).
+updated spectrogram outputs (see Rocha & Romano, 2021 for details).
 
 The ideal window dimensions and the alignment of units are often
 achieved after a few attempts. If this is troublesome, consider
@@ -335,7 +344,7 @@ used as background in the 3D spectrogram (MacLeod et al., 2013). This is
 an iterative process that can be implemented by `eigensound` with
 `analysis.type = "twoDshape"` and `plot.exp = TRUE`, and should lead to
 spectrogram images with minimum influence from background noise (see
-Rocha & Romano *in prep* for details).
+Rocha & Romano, 2021 for details).
 
 In the present study sample, the curve of relative amplitude was set at
 -25 dB (Fig. 7), which is expressed as an absolute value for `dBlevel`
@@ -419,12 +428,12 @@ as sample data from `SoundShape`.
 **Note:** `eig.sample` comprises all vocalizations present in the
 samples of `centralis`, `cuvieri` and `kroyeri`, which led to three
 acoustic units per species; a total of nine `".wav"` files stored in the
-same folder. Use `help(eig.sample)` or check Rocha & Romano (*in prep*)
-for details.
+same folder. Use `help(eig.sample)` or check Rocha & Romano (2021) for
+details.
 
 In the following code, `eigensound` is run with a logarithmic scale on
-the time axis (*i.e.* `log.scale = TRUE`; see Rocha & Romano *in prep*
-for details):
+the time axis (*i.e.* `log.scale = TRUE`; see Rocha & Romano, 2021 for
+details):
 
 ``` r
 # Sample semilandmarks for each ".wav" file on a folder using a logarithmic sampling grid
@@ -471,7 +480,7 @@ summary(pca.eig.sample)
 which PCs should be retained as nontrivial and interpretable, and which
 ones should be ignored (*e.g.* broken stick models,
 [vegan](https://CRAN.R-project.org/package=vegan) package) (Jackson,
-1993; see Rocha & Romano *in prep* for details).
+1993; see Rocha & Romano, 2021 for details).
 
 ### 8.1 Hypothetical sound shape configurations from semilandmark data
 
@@ -601,9 +610,9 @@ approaches to acoustic signal analysis in mammalian biology. *Hystrix,
 the Italian Journal of Mammalogy, 24*(1), 110-125. doi:
 10.4404/hystrix-24.1-6299
 
-Rocha, P. & Romano, P. (*in prep*) The shape of sound: A new `R` package
-that crosses the bridge between Bioacoustics and Geometric
-Morphometrics.
+Rocha, P. & Romano, P. (2021) The shape of sound: A new `R` package that
+crosses the bridge between Bioacoustics and Geometric Morphometrics.
+*Methods in Ecology and Evolution*.
 
 Rohlf, F.J. (2015) The tps series of software. *Hystrix 26*, 9-12.
 
