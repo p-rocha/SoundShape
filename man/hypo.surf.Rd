@@ -84,7 +84,7 @@ Using the coordinates acquired by \code{eigensound(analysis.type = "threeDshape"
 \strong{Note:} The output of \code{hypo.surf} must be interpreted along with the ordination of Principal Components (e.g. \code{\link{pca.plot}}), both featuring the same object used for \code{threeD.out} argument. By doing so, \code{hypo.surf} enhance the comprehension on how sound shape changed along the ordination plot .
 }
 \note{
-Some of codes from \code{hypo.surf} were adapted from \code{\link{plotTangentSpace}} (\code{\link{geomorph}} package). More specifically, the chunk related to the acquisition of hypothetical point configurations for each Principal Component (calculated by \code{\link{prcomp}}, \code{\link{stats}} package) is exactly the same as in \code{\link{plotTangentSpace}}. However, the hypothetical configurations from \code{\link{plotTangentSpace}} are ploted along with an ordination of PCs, whereas \code{hypo.surf} focuses solely on hypothetical 3D surfaces that represent minimum, maximum or mean deformations relative to each PCs (see also Rocha & Romano \emph{in prep}).
+Some codes from \code{hypo.surf} were adapted from \code{plotTangentSpace} function (\code{\link{geomorph}} package version 3.1.2), which is now deprecated and replaced by current functions \code{\link{gm.prcomp}}, \code{\link{summary.gm.prcomp}} and \code{\link{plot.gm.prcomp}}. More specifically, the code chunk related to the acquisition of hypothetical point configurations from each PC (i.e. warp grids) was the same as in \code{plotTangentSpace}. However, the hypothetical configurations from \code{plotTangentSpace} were plotted along with ordination of PCs, whereas \code{hypo.surf} focuses solely on hypothetical 3D surfaces that represent minimum, maximum and mean deformations relative to each PCs.
 }
 \examples{
 data(eig.sample)
@@ -111,7 +111,7 @@ hypo.surf(threeD.out=eig.sample, PC=1, flim=c(0, 4), tlim=c(0, 0.8), x.length=70
 
 }
 \seealso{
-\code{\link{plotTangentSpace}}, \code{\link{geomorph}}, \code{\link{eigensound}}, \code{\link{pca.plot}}
+\code{\link{gm.prcomp}}, \code{\link{summary.gm.prcomp}}, \code{\link{plot.gm.prcomp}}, \code{\link{geomorph}}, \code{\link{eigensound}}, \code{\link{pca.plot}}
 
 Useful links:
 \itemize{

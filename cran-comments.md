@@ -9,7 +9,11 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 notes
+0 errors | 0 warnings | 0 notes
 
-* This is a new release.
+## Comments
+Minor release with subtle changes after publication of paper introducing the package. In addition, the help file of hypo.surf function mentioned a deprecated function in the previous version. 
+
+
+
 

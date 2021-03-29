@@ -30,12 +30,13 @@
 #' @param colkey Similarly as \code{\link{plot3D}}, a list with parameters for the color key (legend). By default: \code{colkey = list(plot = TRUE, cex.clab = 0.9, cex.axis = 0.8, side = 4, length = 0.5, width = 0.7, labels = TRUE, tick = TRUE, lty = 1, lwd = 1, lwd.ticks = 1)}. See also \code{\link{colkey}}
 #'
 #' @note
-#' Some of codes from \code{hypo.surf} were adapted from \code{\link{plotTangentSpace}} (\code{\link{geomorph}} package). More specifically, the chunk related to the acquisition of hypothetical point configurations for each Principal Component (calculated by \code{\link{prcomp}}, \code{\link{stats}} package) is exactly the same as in \code{\link{plotTangentSpace}}. However, the hypothetical configurations from \code{\link{plotTangentSpace}} are ploted along with an ordination of PCs, whereas \code{hypo.surf} focuses solely on hypothetical 3D surfaces that represent minimum, maximum or mean deformations relative to each PCs (see also Rocha & Romano \emph{in prep}).
+#' Some codes from \code{hypo.surf} were adapted from \code{plotTangentSpace} function (\code{\link{geomorph}} package version 3.1.2), which is now deprecated and replaced by current functions \code{\link{gm.prcomp}}, \code{\link{summary.gm.prcomp}} and \code{\link{plot.gm.prcomp}}. More specifically, the code chunk related to the acquisition of hypothetical point configurations from each PC (i.e. warp grids) was the same as in \code{plotTangentSpace}. However, the hypothetical configurations from \code{plotTangentSpace} were plotted along with ordination of PCs, whereas \code{hypo.surf} focuses solely on hypothetical 3D surfaces that represent minimum, maximum and mean deformations relative to each PCs.
+#'
 #'
 #'
 #'
 #' @seealso
-#' \code{\link{plotTangentSpace}}, \code{\link{geomorph}}, \code{\link{eigensound}}, \code{\link{pca.plot}}
+#' \code{\link{gm.prcomp}}, \code{\link{summary.gm.prcomp}}, \code{\link{plot.gm.prcomp}}, \code{\link{geomorph}}, \code{\link{eigensound}}, \code{\link{pca.plot}}
 #'
 #' Useful links:
 #' \itemize{
