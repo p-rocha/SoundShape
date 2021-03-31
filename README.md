@@ -43,7 +43,6 @@ here](https://github.com/p-rocha/SoundShape/issues).
 
 ``` r
 library(SoundShape)
-#> Warning: package 'SoundShape' was built under R version 4.0.3
 
 # Sample data from SoundShape
 data(cuvieri)
@@ -113,17 +112,17 @@ citation("SoundShape")
 #> 
 #> To cite package 'SoundShape' in publications use:
 #> 
-#>   Pedro Rocha (2020). SoundShape: Sound Waves Onto Morphometric Data. R
-#>   package version 1.0. https://CRAN.R-project.org/package=SoundShape
+#>   Pedro Rocha (2021). SoundShape: Sound Waves Onto Morphometric Data. R
+#>   package version 1.1.0. https://github.com/p-rocha/SoundShape
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
 #>     title = {SoundShape: Sound Waves Onto Morphometric Data},
 #>     author = {Pedro Rocha},
-#>     year = {2020},
-#>     note = {R package version 1.0},
-#>     url = {https://CRAN.R-project.org/package=SoundShape},
+#>     year = {2021},
+#>     note = {R package version 1.1.0},
+#>     url = {https://github.com/p-rocha/SoundShape},
 #>   }
 ```
 
@@ -133,7 +132,7 @@ Romano (2021):
   - MacLeod, N., Krieger, J., & Jones, K. E. (2013). Geometric
     morphometric approaches to acoustic signal analysis in mammalian
     biology. *Hystrix, the Italian Journal of Mammalogy, 24*(1),
-    110-125. <doi:10.4404/hystrix-24.1-6299>.
+    110-125. doi: 10.4404/hystrix-24.1-6299.
 
   - Rocha, P. & Romano, P. (2021) The shape of sound: A new R package
     that crosses the bridge between Bioacoustics and Geometric
@@ -212,7 +211,7 @@ WAVE; `".wav"` file extensions), with each file representing a
 comparable acoustic unit (see section 1). These `".wav"` files must be
 stored on the same folder somewhere in your computer, which can be
 created manually at your console and subsequently assigned as [working
-directory in R](http://rprogramming.net/set-working-directory-in-r/).
+directory in R](https://rdrr.io/r/base/getwd.html).
 
 Alternatively, one can create the folder at *e.g.* the current working
 directory using `dir.create`. Also create a subfolder to store the
@@ -383,6 +382,7 @@ par(mfrow=c(1,2), mar=c(4,4,1,1))
 s.kro <- seewave::spectro(cut.kroyeri, flim=c(0, 4), tlim = c(0, 0.8),  
                           grid=F, scale=F, f=44100, wl=512, ovlp=70, cont=TRUE, 
                           contlevels = seq(-25, -25, 1), collevels = seq(-40, 0, 0.1))
+#> This took quite a lot of time to display this graphic, you may set 'fastdisp=TRUE' for a faster, but less accurate, display
 
 # 3D spectrogram (with a lower dBlevel for illustrative purpuses)
 threeDspectro(cut.kroyeri, dBlevel=40, flim=c(0, 4), tlim=c(0, 0.8), main="",
@@ -645,8 +645,8 @@ frogs. *The Journal of Experimental Biology, 198*, 1527-1538.
 
 Robillard, T., Hobel, G., & Gerhardt, H. C. (2006). Evolution of
 advertisement signals in North American hylid frogs: vocalizations as
-end-products of calling behavior. *Cladistics, 22*(6), 533-545.
-<doi:10.1111/j.1096-0031.2006.00118.x>
+end-products of calling behavior. *Cladistics, 22*(6), 533-545. doi:
+10.1111/j.1096-0031.2006.00118.x
 
 Rocha, P. & Romano, P. (2021) The shape of sound: A new R package that
 crosses the bridge between Bioacoustics and Geometric Morphometrics.

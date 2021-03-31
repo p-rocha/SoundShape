@@ -14,6 +14,8 @@
 ## Comments
 Minor release with subtle changes after publication of paper introducing the package. In addition, the help file of hypo.surf function mentioned a deprecated function in the previous version. 
 
+Also fixed doi numbers and broken URLs.
+
 
 
 

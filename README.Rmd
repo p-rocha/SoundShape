@@ -86,7 +86,7 @@ citation("SoundShape")
 
 In addition, we recommend citing MacLeod et al. (2013) and Rocha & Romano (2021):
 
-* MacLeod, N., Krieger, J., & Jones, K. E. (2013). Geometric morphometric approaches to acoustic signal analysis in mammalian biology. *Hystrix, the Italian Journal of Mammalogy, 24*(1), 110-125. doi:10.4404/hystrix-24.1-6299.
+* MacLeod, N., Krieger, J., & Jones, K. E. (2013). Geometric morphometric approaches to acoustic signal analysis in mammalian biology. *Hystrix, the Italian Journal of Mammalogy, 24*(1), 110-125. doi: 10.4404/hystrix-24.1-6299.
 
 * Rocha, P. & Romano, P. (2021) The shape of sound: A new R package that crosses the bridge between Bioacoustics and Geometric Morphometrics. *Methods in Ecology and Evolution, 00*, 1-7. doi: 10.1111/2041-210X.13580
 
@@ -134,7 +134,7 @@ graphics::abline(v=c(0.16, 0.96, 1.55, 2.35, 2.9, 3.8), lty=2)
 
 ## 2. Create folder to store acoustic units
 
-The `eigensound` function (`SoundShape` package) focuses on the acquisition of point coordinates (*i.e.* semilandmarks) from multiple [Waveform Audio File Format](https://en.wikipedia.org/wiki/WAV) (WAV or WAVE; `".wav"` file extensions), with each file representing a comparable acoustic unit (see section 1). These `".wav"` files must be stored on the same folder somewhere in your computer, which can be created manually at your console and subsequently assigned as [working directory in R](http://rprogramming.net/set-working-directory-in-r/). 
+The `eigensound` function (`SoundShape` package) focuses on the acquisition of point coordinates (*i.e.* semilandmarks) from multiple [Waveform Audio File Format](https://en.wikipedia.org/wiki/WAV) (WAV or WAVE; `".wav"` file extensions), with each file representing a comparable acoustic unit (see section 1). These `".wav"` files must be stored on the same folder somewhere in your computer, which can be created manually at your console and subsequently assigned as [working directory in R](https://rdrr.io/r/base/getwd.html). 
 
 Alternatively, one can create the folder at *e.g.* the current working directory using `dir.create`. Also create a subfolder to store the upcoming outputs from `eigensound` function, as the following:
 
@@ -397,7 +397,7 @@ MacLeod, N., Krieger, J. & Jones, K. E. (2013). Geometric morphometric approache
 
 McLister, J. D., Stevens, E. D., & Bogart, J. P. (1995). Comparative contractile dynamics of calling and locomotor muscles in three hylid frogs. *The Journal of Experimental Biology, 198*, 1527-1538.
 
-Robillard, T., Hobel, G., & Gerhardt, H. C. (2006). Evolution of advertisement signals in North American hylid frogs: vocalizations as end-products of calling behavior. *Cladistics, 22*(6), 533-545. doi:10.1111/j.1096-0031.2006.00118.x
+Robillard, T., Hobel, G., & Gerhardt, H. C. (2006). Evolution of advertisement signals in North American hylid frogs: vocalizations as end-products of calling behavior. *Cladistics, 22*(6), 533-545. doi: 10.1111/j.1096-0031.2006.00118.x
 
 Rocha, P. & Romano, P. (2021) The shape of sound: A new R package that crosses the bridge between Bioacoustics and Geometric Morphometrics. *Methods in Ecology and Evolution, 00*, 1-7. doi: 10.1111/2041-210X.13580
 

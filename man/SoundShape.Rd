@@ -29,9 +29,4 @@ Useful links:
 \author{
 \strong{Maintainer}: Pedro Rocha \email{p.rocha1990@gmail.com}
 
-Other contributors:
-\itemize{
-  \item Pedro Romano \email{psrromano@gmail.com} [contributor]
-}
-
 }
