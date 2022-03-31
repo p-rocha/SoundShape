@@ -19,4 +19,5 @@ LineEndingConversion: Posix
 BuildType: Package
 PackageUseDevtools: Yes
 PackageInstallArgs: --no-multiarch --with-keep.source
+PackageCheckArgs: _R_CHECK_LENGTH_1_LOGIC2_=abort,verbose
 PackageRoxygenize: rd,collate,namespace
