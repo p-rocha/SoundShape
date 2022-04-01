@@ -12,7 +12,7 @@
 0 errors | 0 warnings | 0 notes
 
 ## Comments
-Minor changes through documentation.
+Minor changes and updates through documentation. 
 
 
 
