@@ -7,9 +7,9 @@
 
 Here, you will find information on how to implement a promising, and yet
 little explored method for biacoustical analysis: the so called
-*eigensound* analysis developed by [MacLeod, Krieger and Jones
-(2013)](https://doi.org/10.4404/hystrix-24.1-6299) and expanded by
-[Rocha & Romano (2021)](https://doi.org/10.1111/2041-210X.13580).
+*eigensound* analysis developed by MacLeod, Krieger and Jones
+(2013) and expanded by
+Rocha & Romano (2021).
 
 Eigensound is a multidisciplinary method focused on the direct
 comparison between homologous sounds from different species (*i.e.*

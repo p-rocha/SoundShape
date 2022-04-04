@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 [![DOI](https://zenodo.org/badge/298667332.svg)](https://zenodo.org/badge/latestdoi/298667332)
 
-Here, you will find information on how to implement a promising, and yet little explored method for biacoustical analysis: the so called *eigensound* analysis developed by [MacLeod, Krieger and Jones (2013)](https://doi.org/10.4404/hystrix-24.1-6299) and expanded by [Rocha & Romano (2021)](https://doi.org/10.1111/2041-210X.13580).
+Here, you will find information on how to implement a promising, and yet little explored method for biacoustical analysis: the so called *eigensound* analysis developed by MacLeod, Krieger and Jones (2013) and expanded by Rocha & Romano (2021).
 
 Eigensound is a multidisciplinary method focused on the direct comparison between homologous sounds from different species (*i.e.* stereotyped calls/acoustic units; Macleod *et al.*, 2013; Rocha & Romano, 2021). It consists on applying a sampling grid over the representation of sound (*i.e.* spectrogram data; Figs. 1 and 2) and then translate the spectrogram into a dataset that can be analyzed similarly to coordinate sets used in Geometric Morphometrics Methods (GMM). By doing so, eigensound crosses the bridge between Bioacoustics and GMM.
 
