@@ -11,7 +11,6 @@ eigensound(
   dBlevel = 25,
   flim = c(0, 10),
   tlim = c(0, 1),
-  trel = tlim,
   x.length = 80,
   y.length = 60,
   log.scale = TRUE,
@@ -44,8 +43,6 @@ eigensound(
 \item{flim}{modifications of the frequency limits (Y-axis). Vector with two values in kHz. By default: \code{flim = c(0, 10)}}
 
 \item{tlim}{modifications of the time limits (X-axis). Vector with two values in seconds. By default: \code{tlim = c(0, 1)}}
-
-\item{trel}{only applies when \code{analysis.type = "twoDshape"}. Set the relative scale to be used on the time (X-axis); relative to the numbers displayed on the X-axis of spectrogram plots. By default: \code{trel = tlim}}
 
 \item{x.length}{only applies when \code{analysis.type = "threeDshape"}. Length of sequence (i.e. number of cells per side on sound window) to be used as sampling grid coordinates on the time (X-axis).  By default: \code{x.length = 80}}
 
@@ -84,7 +81,7 @@ eigensound(
 \item{TPS.file}{Desired name for the \code{tps} file containing semilandmark coordinates. Should be presented between quotation marks. \strong{Note:} Whenever \code{analysis.type = "twoDshape"}, it will only work if \code{add.points = TRUE}. By default: \code{TPS.file = NULL} (i.e. prevents \code{eigensound} from creating a \code{tps} file)}
 }
 \description{
-\code{eigensound} is the main feature of \code{SoundShape} package. For each \code{".wav"} file on a given folder, the fuction will compute spectrogram data and acquire semilandmarks using a 3D representation of sound (\code{analysis.type = "threeDshape"}), allowing its users to acquire, and simultaneously store point coordinates (i.e. semilandmarkns) as an R object, and/or in TPS format – the native file format of James Rohlf’s TPS series (Rohlf, 2015).
+\code{eigensound} is the main feature of \code{SoundShape} package. For each \code{".wav"} file on a given folder, the fuction will compute spectrogram data and acquire semilandmarks using a 3D representation of sound (\code{analysis.type = "threeDshape"}), allowing its users to acquire, and simultaneously store point coordinates (i.e. semilandmarks) as an R object, and/or in TPS format – the native file format of James Rohlf’s TPS series (Rohlf, 2015).
 
 Moreover, \code{eigensound} also allow its user to export 2D and 3D spectrogram images (\code{plot.exp = TRUE}) that are helpful during the protocol for error verification and for illustrative purposes (see Rocha & Romano \emph{in prep}). Alternativaly, \code{eigensound} feature the option of acquiring semilandmarks as the cross-correlation between energy quantiles and a curve of relative amplitude from 2D spectrograms (\code{analysis.type = "twoDshape"}; see \code{Details} section).
 }
