@@ -5,14 +5,14 @@
 
 * ubuntu 16.04 (on travis-ci), R 4.1.0
 
-* win-builder (devel R 4.1.0; release R 4.0.4)
+* win-builder (R-devel 4.3.0; release R 4.1.1)
 
 ## R CMD check results
 
 0 errors | 0 warnings | 0 notes
 
 ## Comments
-Minor changes and updates through documentation. 
+Fixed problems with argument trel from eigensound function.
 
 
 

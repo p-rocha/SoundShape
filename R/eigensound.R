@@ -10,7 +10,6 @@
 #' @param dBlevel absolute amplitude value to be used as relative amplitude contour, which will serve as reference for semilandmark acquisition in both \code{analysis.type = "threeDshape"} and \code{"twoDshape"}. By default: \code{dBlevel = 25}
 #' @param flim modifications of the frequency limits (Y-axis). Vector with two values in kHz. By default: \code{flim = c(0, 10)}
 #' @param tlim modifications of the time limits (X-axis). Vector with two values in seconds. By default: \code{tlim = c(0, 1)}
-#' @param trel only applies when \code{analysis.type = "twoDshape"}. Set the relative scale to be used on the time (X-axis); relative to the numbers displayed on the X-axis of spectrogram plots. By default: \code{trel = tlim}
 #' @param x.length only applies when \code{analysis.type = "threeDshape"}. Length of sequence (i.e. number of cells per side on sound window) to be used as sampling grid coordinates on the time (X-axis).  By default: \code{x.length = 80}
 #' @param y.length only applies when \code{analysis.type = "threeDshape"}. Length of sequence (i.e. number of cells per side on sound window) to be used as sampling grid coordinates on the frequency (Y-axis). By default: \code{y.length = 60}
 #' @param log.scale only applies when \code{analysis.type = "threeDshape"}. A logical. If \code{TRUE}, \code{eigensound} will use a logarithmic scale on the time (X-axis), which is recommeded when the analyzed sounds present great variation on this axis (e.g. emphasize short duration sounds). If \code{FALSE}, a linear scale is used instead (same as MacLeod et al., 2013). By default: \code{log.scale = TRUE}
@@ -94,7 +93,7 @@
 #'
 #' @export
 #'
-eigensound <- function(analysis.type = NULL, wav.at = NULL, store.at = wav.at, dBlevel=25, flim=c(0, 10), tlim = c(0, 1), trel=tlim, x.length=80, y.length=60, log.scale=TRUE, back.amp=35, add.points=FALSE, add.contour=TRUE, lwd=1, EQ= c(0.05, 0.15, 0.3, 0.5, 0.7, 0.85, 0.95), mag.time=1, f=44100, wl=512, ovlp=70, plot.exp = TRUE, plot.as = "jpeg", plot.type = "surface", rotate.Xaxis=60, rotate.Yaxis=40, TPS.file = NULL){
+eigensound <- function(analysis.type = NULL, wav.at = NULL, store.at = wav.at, dBlevel=25, flim=c(0, 10), tlim = c(0, 1), x.length=80, y.length=60, log.scale=TRUE, back.amp=35, add.points=FALSE, add.contour=TRUE, lwd=1, EQ= c(0.05, 0.15, 0.3, 0.5, 0.7, 0.85, 0.95), mag.time=1, f=44100, wl=512, ovlp=70, plot.exp = TRUE, plot.as = "jpeg", plot.type = "surface", rotate.Xaxis=60, rotate.Yaxis=40, TPS.file = NULL){
 
   # Invalid arguments
   if(is.null(wav.at)) {stop("Use 'wav.at' to specify folder path where '.wav' files are stored")}
@@ -323,14 +322,14 @@ eigensound <- function(analysis.type = NULL, wav.at = NULL, store.at = wav.at, d
 
         if(add.points==FALSE){
           seewave::spectro(Wav, f=f, wl=wl, ovlp=ovlp, osc=F, scale=F, grid=F,
-                      main= sub(".wav", "", file), trel=trel, flim=flim, tlim=tlim,
+                      main= sub(".wav", "", file), trel=tlim, flim=flim, tlim=tlim,
                       cont=add.contour,contlevels=seq(-dBlevel,-dBlevel,1),lwd=lwd,
                       collevels=seq(-back.amp, 0, 0.1))
         } # end contour
 
         if(add.points==TRUE){
           seewave::spectro(Wav, f=f, wl=wl, ovlp=ovlp, osc=F, scale=F, grid=F,
-                    main= sub(".wav", "", file), trel=trel, flim=flim, tlim=tlim,
+                    main= sub(".wav", "", file), trel=tlim, flim=flim, tlim=tlim,
                     collevels=seq(-back.amp, 0, 0.1))
           if(add.contour==TRUE){graphics::polygon(x=con$x, y=con$y, lwd=lwd)}
           graphics::points(x=(SM$Time)/mag.time, y=SM$Frequency.values, pch=21, col="black", bg="red", cex=1.1)

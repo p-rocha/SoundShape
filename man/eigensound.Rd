@@ -11,7 +11,6 @@ eigensound(
   dBlevel = 25,
   flim = c(0, 10),
   tlim = c(0, 1),
-  trel = tlim,
   x.length = 80,
   y.length = 60,
   log.scale = TRUE,
@@ -44,8 +43,6 @@ eigensound(
 \item{flim}{modifications of the frequency limits (Y-axis). Vector with two values in kHz. By default: \code{flim = c(0, 10)}}
 
 \item{tlim}{modifications of the time limits (X-axis). Vector with two values in seconds. By default: \code{tlim = c(0, 1)}}
-
-\item{trel}{only applies when \code{analysis.type = "twoDshape"}. Set the relative scale to be used on the time (X-axis); relative to the numbers displayed on the X-axis of spectrogram plots. By default: \code{trel = tlim}}
 
 \item{x.length}{only applies when \code{analysis.type = "threeDshape"}. Length of sequence (i.e. number of cells per side on sound window) to be used as sampling grid coordinates on the time (X-axis).  By default: \code{x.length = 80}}
 
