@@ -322,14 +322,14 @@ eigensound <- function(analysis.type = NULL, wav.at = NULL, store.at = wav.at, d
 
         if(add.points==FALSE){
           seewave::spectro(Wav, f=f, wl=wl, ovlp=ovlp, osc=F, scale=F, grid=F,
-                      main= sub(".wav", "", file), trel=tlim, flim=flim, tlim=tlim,
+                      main= sub(".wav", "", file), flim=flim, tlim=tlim,
                       cont=add.contour,contlevels=seq(-dBlevel,-dBlevel,1),lwd=lwd,
                       collevels=seq(-back.amp, 0, 0.1))
         } # end contour
 
         if(add.points==TRUE){
           seewave::spectro(Wav, f=f, wl=wl, ovlp=ovlp, osc=F, scale=F, grid=F,
-                    main= sub(".wav", "", file), trel=tlim, flim=flim, tlim=tlim,
+                    main= sub(".wav", "", file), flim=flim, tlim=tlim,
                     collevels=seq(-back.amp, 0, 0.1))
           if(add.contour==TRUE){graphics::polygon(x=con$x, y=con$y, lwd=lwd)}
           graphics::points(x=(SM$Time)/mag.time, y=SM$Frequency.values, pch=21, col="black", bg="red", cex=1.1)
