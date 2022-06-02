@@ -6,6 +6,7 @@
 #' @param wav.to name of the folder where new \code{".wav"} files will be stored. Should be presented between quotation marks. By default: \code{wav.to = "Aligned"}
 #' @param time.length intended length for the time (X-axis) in seconds. Should be a value that encompasses all sounds in the study. By default: \code{time.length = 1}
 #' @param time.perc slight time gap (in percentage) relative to the intended length that encompass all sounds in the study (i.e. \code{time.length}). Intervals are added before and after the minimum and maximum time coordinates (X-values) from the selected curve of relative amplitude (\code{dBlevel}). By default: \code{time.perc = 0.005} (i.e. 0.5%)
+#' @param flim modifications of the frequency limits (Y-axis) to focus on acoustic units. Useful for recordings with low signal-to-noise ratio. Vector with two values in kHz. By default: \code{flim = NULL}
 #' @param dBlevel absolute amplitude value to be used as relative amplitude contour, which will serve as reference for call placement. By default: \code{dBlevel = 25}
 #' @param f sampling frequency of \code{".wav"} files (in Hz). By default: \code{f = 44100}
 #' @param wl length of the window for the analysis. By default: \code{wl = 512}
@@ -68,7 +69,7 @@
 #'
 #' @export
 #'
-align.wave <- function(wav.at=NULL, wav.to="Aligned", time.length=1, time.perc=0.005, dBlevel=25, f=44100, wl=512, ovlp=70)  {
+align.wave <- function(wav.at=NULL, wav.to="Aligned", time.length=1, time.perc=0.005, flim=NULL, dBlevel=25, f=44100, wl=512, ovlp=70)  {
 
   if(is.null(wav.at)) {stop("Use 'wav.at' to specify folder path where '.wav' files are stored")}
 
@@ -84,7 +85,7 @@ align.wave <- function(wav.at=NULL, wav.to="Aligned", time.length=1, time.perc=0
     orig.wav <- seewave::addsilw(orig.wav0, f=f, at="end", d=(time.length*10), output = "Wave")
 
     # create spectro object
-    orig.spec <- seewave::spectro(orig.wav, f=f, wl=wl, ovlp=ovlp, osc=F, grid=F, plot=F)
+    orig.spec <- seewave::spectro(orig.wav, f=f, wl=wl, ovlp=ovlp, osc=F, grid=F, plot=F, flim=flim)
 
     # Acquire contours
     cont.spec <- grDevices::contourLines(x=orig.spec$time, y=orig.spec$freq, z=t(orig.spec$amp),
@@ -102,7 +103,10 @@ align.wave <- function(wav.at=NULL, wav.to="Aligned", time.length=1, time.perc=0
     t.min <- min(min.spec)
     t.max <- max(max.spec)
 
-    if((t.min-(time.perc*time.length))<=0)
+    if(t.min==0)
+    stop("Background noise is likely interfering with the alighment. Consider using 'flim' argument to focus on acoustic signals")
+
+    if((t.min-(time.perc*time.length))<0)
       stop("Time percentage is too large. Consider a smaller value of 'time.perc'")
 
     # cut Wave file using minimum and maximum time values

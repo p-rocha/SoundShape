@@ -9,6 +9,7 @@ align.wave(
   wav.to = "Aligned",
   time.length = 1,
   time.perc = 0.005,
+  flim = NULL,
   dBlevel = 25,
   f = 44100,
   wl = 512,
@@ -23,6 +24,8 @@ align.wave(
 \item{time.length}{intended length for the time (X-axis) in seconds. Should be a value that encompasses all sounds in the study. By default: \code{time.length = 1}}
 
 \item{time.perc}{slight time gap (in percentage) relative to the intended length that encompass all sounds in the study (i.e. \code{time.length}). Intervals are added before and after the minimum and maximum time coordinates (X-values) from the selected curve of relative amplitude (\code{dBlevel}). By default: \code{time.perc = 0.005} (i.e. 0.5\%)}
+
+\item{flim}{modifications of the frequency limits (Y-axis) to focus on acoustic units. Useful for recordings with low signal-to-noise ratio. Vector with two values in kHz. By default: \code{flim = NULL}}
 
 \item{dBlevel}{absolute amplitude value to be used as relative amplitude contour, which will serve as reference for call placement. By default: \code{dBlevel = 25}}
 

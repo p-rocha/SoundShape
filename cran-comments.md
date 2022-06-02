@@ -5,7 +5,7 @@
 
 * ubuntu 16.04 (on travis-ci), R 4.1.0
 
-* win-builder (devel R 4.1.0; release R 4.1.1)
+* win-builder (R-devel 4.3.0; release R 4.1.1)
 
 ## R CMD check results
 
