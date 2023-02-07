@@ -1,7 +1,7 @@
 Package: SoundShape
 Title: Sound Waves Onto Morphometric Data
 Version: 1.2.2
-Date: 2022-06-02
+Date: 2023-02-07
 Authors@R: c(
   person("Pedro", "Rocha", email="p.rocha1990@gmail.com", role = c("aut", "cre")))
 Description: Implement a promising, and yet little explored protocol for bioacoustical analysis, the eigensound method by MacLeod, Krieger and Jones (2013) <doi:10.4404/hystrix-24.1-6299>. Eigensound is a multidisciplinary method focused on the direct comparison between stereotyped sounds from different species. 'SoundShape', in turn, provide the tools required for anyone to go from sound waves to Principal Components Analysis, using tools extracted from traditional bioacoustics (i.e. 'tuneR' and 'seewave' packages), geometric morphometrics (i.e. 'geomorph' package) and multivariate analysis (e.g. 'stats' package). For more information, please see Rocha and Romano (2021) and check 'SoundShape' repository on GitHub for news and updates <https://github.com/p-rocha/SoundShape>.
