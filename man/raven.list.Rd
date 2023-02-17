@@ -3,7 +3,7 @@
 \docType{data}
 \name{raven.list}
 \alias{raven.list}
-\title{Sample of selection tables made using \href{https://ravensoundsoftware.com/software/raven-pro/}{Raven Pro} software}
+\title{Sample of tables containing selection boxes from Raven Pro software}
 \format{
 An object of the class \code{"list"} (\code{\link{base}} package).
 }
@@ -19,26 +19,19 @@ Sample data of \code{"Wave"} objects:
 data(raven.list)
 }
 \description{
-This sample file features a list of three \code{data.frame} objects containing the selection boxes for the acoustic units of \link{centralis}, \link{cuvieri} and \link{kroyeri}. The selection was perfomed manually using \href{https://ravensoundsoftware.com/software/raven-pro/}{Raven Pro} software, which is commonplace in bioacoustic analysis.
+This sample file features a list of three \code{data.frame} objects containing the selection boxes for the acoustic units of \code{\link{centralis}}, \code{\link{cuvieri}} and \code{\link{kroyeri}}. The selection was performed manually using \href{https://ravensoundsoftware.com/software/raven-pro/}{Raven Pro} software, which is commonplace in bioacoustic analysis.
 }
 \details{
-This sample list was built to illustrate the usage of \link{raven.to.wav} function.
-Each \code{data.frame} in the list represent selection boxes from \href{https://ravensoundsoftware.com/software/raven-pro/}{Raven Pro} software featuring either \link{centralis}, \link{cuvieri} or \link{kroyeri} samples. These, in turn, are acoustic recordings containing three stereotyped calls emitted by a male frog \emph{Physalaemus cuvieri}, \emph{P. centralis} or \emph{P. kroyeri}  (Amphibia, Anura, Leptodactylidae), respectively.
+This sample list was built to illustrate the usage of \code{\link{raven.to.wav}} function.
+Each \code{data.frame} in the list represent selection boxes from \href{https://ravensoundsoftware.com/software/raven-pro/}{Raven Pro} software featuring either \code{\link{centralis}}, \code{\link{cuvieri}} or \code{\link{kroyeri}} samples. These, in turn, are acoustic recordings containing three stereotyped calls emitted by a male frog \emph{Physalaemus cuvieri}, \emph{P. centralis} or \emph{P. kroyeri}  (Amphibia, Anura, Leptodactylidae), respectively.
 }
 \examples{
 
-\donttest{
 
 # Write example
 
-
-}
-
-
 }
 \references{
-MacLeod, N., Krieger, J. & Jones, K. E. (2013). Geometric morphometric approaches to acoustic signal analysis in mammalian biology. \emph{Hystrix, the Italian Journal of Mammalogy, 24}(1), 110-125.
-
 Rocha, P. & Romano, P. (2021) The shape of sound: A new \code{R} package that crosses the bridge between Bioacoustics and Geometric Morphometrics. \emph{Methods in Ecology and Evolution, 12}(6), 1115-1121.
 }
 \keyword{datasets}

@@ -15,7 +15,7 @@
 #' Pedro Rocha
 #'
 #' @seealso
-#' \code{\link{align.wave}}
+#' \code{\link{align.wave}}, \code{\link{raven.list}},
 #'
 #' Useful links:
 #' \itemize{
@@ -32,8 +32,6 @@
 #' }
 #'
 #' @references
-#' MacLeod, N., Krieger, J. & Jones, K. E. (2013). Geometric morphometric approaches to acoustic signal analysis in mammalian biology. \emph{Hystrix, the Italian Journal of Mammalogy, 24}(1), 110-125.
-#'
 #' Rocha, P. & Romano, P. (2021) The shape of sound: A new \code{R} package that crosses the bridge between Bioacoustics and Geometric Morphometrics. \emph{Methods in Ecology and Evolution, 12}(6), 1115-1121.
 #'
 #'
@@ -61,7 +59,8 @@ raven.to.wave <- function(orig.wav=NULL, raven.at=orig.wav, wav.samples="wav sam
   # Import Raven tables
   raven.selections <- data.frame()
   for(raven in raven.tables){
-    raven.temp <- read.table(raven, h=T, sep="\t", stringsAsFactors = T)
+    raven.temp <- read.table(file.path(raven.at, raven),
+                             h=T, sep="\t", stringsAsFactors = T)
 
     raven.selections <- rbind(raven.selections, raven.temp)
 
@@ -83,12 +82,13 @@ raven.to.wave <- function(orig.wav=NULL, raven.at=orig.wav, wav.samples="wav sam
   # For each wav file, use Raven selections to create new files
   for(wav in wav.files){
 
-    raven.temp <- read.table(grep(stringr::str_sub(wav,start=0, end = -5),
-                                  raven.tables, value=T), h=T, sep="\t")
+    raven.temp <- read.table(file.path(orig.wav,
+                                       grep(stringr::str_sub(wav,start=0, end = -5),
+                                            raven.tables, value=T)), h=T, sep="\t")
 
     for(i in 1:length(raven.temp$Selection[raven.temp$View=="Waveform 1"])){
 
-      wav.temp <- tuneR::readWave(wav, units="seconds",
+      wav.temp <- tuneR::readWave(file.path(orig.wav, wav), units="seconds",
                                   from= raven.temp$Begin.Time..s.[
                                     raven.temp$Selection== i & raven.temp$View=="Waveform 1"],
                                   to= raven.temp$Begin.Time..s.[
@@ -96,8 +96,11 @@ raven.to.wave <- function(orig.wav=NULL, raven.at=orig.wav, wav.samples="wav sam
                                     max.dur)
       tuneR::writeWave(wav.temp, extensible = T,
                        filename = file.path(orig.wav, wav.samples,
-                                            paste(stringr::str_sub(wav,start=0, end = -5),
-                                                  " - sample ", i, ".wav", sep="")))
+                                            ifelse(i<10,
+                                                   paste(stringr::str_sub(wav,start=0, end = -5),
+                                                         "_sample-0", i, ".wav", sep=""),
+                                                   paste(stringr::str_sub(wav,start=0, end = -5),
+                                                         "_sample-", i, ".wav", sep=""))))
       rm(wav.temp)
 
     } # end loop - for each selection
@@ -109,4 +112,3 @@ raven.to.wave <- function(orig.wav=NULL, raven.at=orig.wav, wav.samples="wav sam
   rm(wav.files, raven.tables, raven.selections)
 
 } # end function
-

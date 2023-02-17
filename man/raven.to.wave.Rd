@@ -32,12 +32,10 @@ create one \code{".wav"} file for each selection created using \href{https://rav
 
 }
 \references{
-MacLeod, N., Krieger, J. & Jones, K. E. (2013). Geometric morphometric approaches to acoustic signal analysis in mammalian biology. \emph{Hystrix, the Italian Journal of Mammalogy, 24}(1), 110-125.
-
 Rocha, P. & Romano, P. (2021) The shape of sound: A new \code{R} package that crosses the bridge between Bioacoustics and Geometric Morphometrics. \emph{Methods in Ecology and Evolution, 12}(6), 1115-1121.
 }
 \seealso{
-\code{\link{align.wave}}
+\code{\link{align.wave}}, \code{\link{raven.list}},
 
 Useful links:
 \itemize{
