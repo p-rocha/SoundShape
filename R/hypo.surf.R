@@ -70,6 +70,12 @@
 #' hypo.surf(threeD.out=eig.sample, PC=1, flim=c(0, 4), tlim=c(0, 0.8), x.length=70, y.length=47)
 #'
 #'
+#'#' @references
+#' MacLeod, N., Krieger, J. & Jones, K. E. (2013). Geometric morphometric approaches to acoustic signal analysis in mammalian biology. \emph{Hystrix, the Italian Journal of Mammalogy, 24}(1), 110-125.
+#'
+#' Rocha, P. & Romano, P. (2021) The shape of sound: A new \code{R} package that crosses the bridge between Bioacoustics and Geometric Morphometrics. \emph{Methods in Ecology and Evolution, 12}(6), 1115-1121.
+#'
+#'
 #' @export
 #'
 hypo.surf <- function(threeD.out=NULL, PC=1, flim=c(0, 4), tlim=c(0, 0.8), x.length=70, y.length=47, log.scale=TRUE, f=44100, wl=512, ovlp=70, plot.exp=FALSE, plot.as="jpeg", store.at = NULL, rotate.Xaxis=60, rotate.Yaxis=40, cex.axis=0.5, cex.lab=0.9, cex.main=1.1, lwd=0.1, xlab="Time coordinates", ylab="Frequency coordinates", zlab="Amplitude", colkey = list(plot = TRUE, cex.clab = 0.9, cex.axis = 0.8, side = 4, length = 0.5, width = 0.7, labels = TRUE, tick = TRUE, lty = 1, lwd = 1, lwd.ticks = 1))

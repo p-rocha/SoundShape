@@ -1,6 +1,6 @@
 #' Automatic placement of calls at beggining of sound window
 #'
-#' @description Recreate each \code{".wav"} file on a given folder while placing calls at the beggining of sound window. New \code{".wav"} files will be stored on a new folder, which is automatically created.
+#' @description Recreate each \code{".wav"} file on a given folder while placing calls at the beginning of sound window. New \code{".wav"} files will be stored on a new folder, which is automatically created.
 #'
 #' @param wav.at filepath to the folder where \code{".wav"} files are stored. Should be presented between quotation marks. By default: \code{wav.at = NULL} (i.e. user must specify the filepath to \code{".wav"} files)
 #' @param wav.to name of the folder where new \code{".wav"} files will be stored. Should be presented between quotation marks. By default: \code{wav.to = "Aligned"}
@@ -64,7 +64,7 @@
 #' @references
 #' MacLeod, N., Krieger, J. & Jones, K. E. (2013). Geometric morphometric approaches to acoustic signal analysis in mammalian biology. \emph{Hystrix, the Italian Journal of Mammalogy, 24}(1), 110-125.
 #'
-#' Rocha, P. & Romano, P. (\emph{in prep}) The shape of sound: A new \code{R} package that crosses the bridge between Bioacoustics and Geometric Morphometrics. \emph{Methods in Ecology and Evolution}
+#' Rocha, P. & Romano, P. (2021) The shape of sound: A new \code{R} package that crosses the bridge between Bioacoustics and Geometric Morphometrics. \emph{Methods in Ecology and Evolution, 12}(6), 1115-1121.
 #'
 #'
 #' @export

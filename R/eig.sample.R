@@ -34,6 +34,12 @@
 #'   \item{\code{\link{kroyeri}}: Advertisement call of \emph{Physalaemus kroyeri}; Original recording housed at Fonoteca Neotropical Jacques Vielliard (FNJV-0032047). Recorded by Werner Bokermann.}
 #' }
 #'
+#' @references
+#' MacLeod, N., Krieger, J. & Jones, K. E. (2013). Geometric morphometric approaches to acoustic signal analysis in mammalian biology. \emph{Hystrix, the Italian Journal of Mammalogy, 24}(1), 110-125.
+#'
+#' Rocha, P. & Romano, P. (2021) The shape of sound: A new \code{R} package that crosses the bridge between Bioacoustics and Geometric Morphometrics. \emph{Methods in Ecology and Evolution, 12}(6), 1115-1121.
+#'
+#'
 #'@examples
 #' data(eig.sample)
 #'
@@ -50,7 +56,7 @@
 #' pca.plot(PCA.out = pca.eig.sample, groups = sample.gr, conv.hulls = sample.gr,
 #'          main="PCA of 3D coordinates", leg=TRUE, leg.pos = "top")
 #'
-#' # In addition, verify hypothetical sound surfaces for each PC
+#' # Verify hypothetical sound surfaces for each Principal Component
 #' hypo.surf(threeD.out=eig.sample, PC=1, flim=c(0, 4), tlim=c(0, 0.8),
 #'           x.length=70, y.length=47, plot.exp = FALSE)
 #'

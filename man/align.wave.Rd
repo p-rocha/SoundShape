@@ -36,7 +36,7 @@ align.wave(
 \item{ovlp}{overlap between two successive windows (in \%) for increased spectrogram resolution. By default: \code{ovlp = 70}}
 }
 \description{
-Recreate each \code{".wav"} file on a given folder while placing calls at the beggining of sound window. New \code{".wav"} files will be stored on a new folder, which is automatically created.
+Recreate each \code{".wav"} file on a given folder while placing calls at the beginning of sound window. New \code{".wav"} files will be stored on a new folder, which is automatically created.
 }
 \examples{
 \donttest{
@@ -80,7 +80,7 @@ eigensound(analysis.type = "twoDshape", wav.at = file.path(wav.at, "Aligned"), s
 \references{
 MacLeod, N., Krieger, J. & Jones, K. E. (2013). Geometric morphometric approaches to acoustic signal analysis in mammalian biology. \emph{Hystrix, the Italian Journal of Mammalogy, 24}(1), 110-125.
 
-Rocha, P. & Romano, P. (\emph{in prep}) The shape of sound: A new \code{R} package that crosses the bridge between Bioacoustics and Geometric Morphometrics. \emph{Methods in Ecology and Evolution}
+Rocha, P. & Romano, P. (2021) The shape of sound: A new \code{R} package that crosses the bridge between Bioacoustics and Geometric Morphometrics. \emph{Methods in Ecology and Evolution, 12}(6), 1115-1121.
 }
 \seealso{
 \code{\link{eigensound}}

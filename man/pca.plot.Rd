@@ -95,7 +95,7 @@ pca.plot(PCA.out = pca.eig.sample, groups = sample.gr, conv.hulls = sample.gr,
 
 }
 \references{
-Rocha, P. & Romano, P. (\emph{in prep}) The shape of sound: A new \code{R} package that crosses the bridge between Bioacoustics and Geometric Morphometrics.
+Rocha, P. & Romano, P. (2021) The shape of sound: A new \code{R} package that crosses the bridge between Bioacoustics and Geometric Morphometrics. \emph{Methods in Ecology and Evolution, 12}(6), 1115-1121.
 }
 \seealso{
 \code{\link{prcomp}}, \code{\link{palette}}, \code{\link{rgb}}, \code{\link{rainbow}}, \code{\link{legend}}

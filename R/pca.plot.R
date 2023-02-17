@@ -38,7 +38,7 @@
 #'   \item{Report bugs at \url{https://github.com/p-rocha/SoundShape/issues}}}
 #'
 #' @references
-#' Rocha, P. & Romano, P. (\emph{in prep}) The shape of sound: A new \code{R} package that crosses the bridge between Bioacoustics and Geometric Morphometrics.
+#' Rocha, P. & Romano, P. (2021) The shape of sound: A new \code{R} package that crosses the bridge between Bioacoustics and Geometric Morphometrics. \emph{Methods in Ecology and Evolution, 12}(6), 1115-1121.
 #'
 #' @examples
 #' data(eig.sample)
