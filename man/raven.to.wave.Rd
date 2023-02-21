@@ -5,20 +5,17 @@
 \title{Export sample \code{".wav"} files using selections from Raven Pro software.}
 \usage{
 raven.to.wave(
-  orig.wav = NULL,
-  raven.at = orig.wav,
-  wav.samples = "wav samples",
-  max.dur = NULL
+  orig.wav.folder = NULL,
+  raven.at = orig.wav.folder,
+  wav.samples = "wav samples"
 )
 }
 \arguments{
-\item{orig.wav}{filepath to the folder where original \code{".wav"} files are stored. Should be presented between quotation marks. By default: \code{orig.wav = NULL} (i.e. user must specify the filepath to \code{".wav"} files)}
+\item{orig.wav.folder}{filepath to the folder where original \code{".wav"} files are stored. Should be presented between quotation marks. By default: \code{orig.wav.folder = NULL} (i.e. user must specify the filepath to \code{".wav"} files)}
 
-\item{raven.at}{filepath to the folder where selection tables from \href{https://ravensoundsoftware.com/software/raven-pro/}{Raven Pro} software are stored. Should be presented between quotation marks. File name should end with \code{"selections.txt"}. By default: \code{raven.at = orig.wav} (i.e. raven tables stored in the same folder as original  \code{".wav"} files)}
+\item{raven.at}{filepath to the folder where selection tables from \href{https://ravensoundsoftware.com/software/raven-pro/}{Raven Pro} software are stored. Should be presented between quotation marks. File name should end with \code{"selections.txt"}. By default: \code{raven.at = orig.wav.folder} (i.e. raven tables stored in the same folder as original  \code{".wav"} files)}
 
-\item{wav.samples}{name of the folder where new \code{".wav"} files will be stored. Should be presented between quotation marks. By default: \code{wav.samples = "wav samples"}}
-
-\item{max.dur}{optional argument to specify intended duration of sample \code{".wav"} files. If \code{max.dur=NULL}, function \code{raven.to.wav} will define the duration as 20\% longer than the maximum duration of selections from Raven Pro software. By default: \code{max.dur=NULL}}
+\item{wav.samples}{folder where new \code{".wav"} files will be stored. Can be either a filepath to the intended folder, or the name of the folder i.e.(\code{wav.samples = "wav samples"}). In the later case, a new folder will be created within the one specified by \code{orig.wav.folder}. Should be presented between quotation marks. By default: \code{wav.samples = "wav samples"}}
 }
 \description{
 create one \code{".wav"} file for each selection created using \href{https://ravensoundsoftware.com/software/raven-pro/}{Raven Pro} software, which is commonplace in bioacoustical analysis. Each selection (i.e. line in table) should represent a each acoustic unit within the sample study.
