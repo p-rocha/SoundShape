@@ -26,7 +26,64 @@
 #' @examples
 #' \donttest{
 #'
-#' # Write example
+#'#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#'#  Create folders on your console  #
+#'#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#'
+#'# Create temporary folder to store original ".wav" files containing multiple units
+#'orig.wav <- file.path(base::tempdir(), "original wave")
+#'if(!dir.exists(orig.wav)) dir.create(orig.wav)
+#'
+#'# Create temporary folder to store sample ".wav" files from original recordings
+#'wav.at <- file.path(base::tempdir(), "wav samples")
+#'if(!dir.exists(wav.at)) dir.create(wav.at)
+#'
+#'# Create temporary folder to store results
+#'store.at <- file.path(base::tempdir(), "output")
+#'if(!dir.exists(store.at)) dir.create(store.at)
+#'
+#'
+#'#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#'#   Select acoustic units based on Raven Pro selections   #
+#'#                                                         #
+#'#              Using raven.to.wav function                #
+#'#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#'
+#'# Export original sample ".wav" files from SoundShape examples
+#'writeWave(centralis, filename = file.path(orig.wav, "centralis.wav"), extensible = T)
+#'writeWave(cuvieri, filename = file.path(orig.wav, "cuvieri.wav"), extensible = T)
+#'writeWave(kroyeri, filename = file.path(orig.wav, "kroyeri.wav"), extensible = T)
+#'
+#'# Store Raven Pro selection tables at same folder from original ".wav" files
+#'for(i in 1:length(raven.list)){
+#'  write.table(raven.list[i], file=file.path(orig.wav, names(raven.list)[i]),
+#'                quote=F, sep="\t", row.names = F, col.names = colnames(raven.list[[i]]))  } # end loop
+#'
+#'
+#'# Verify if folder has both original ".wav" files and Raven's selections
+#'dir(orig.wav)
+#'
+#'###
+#'## Start here when using your own recordings
+#'
+#'# Export a ".wav" sample for each selection made in Raven Pro
+#'raven.to.wave(orig.wav.folder = orig.wav, wav.samples = wav.at)
+#'
+#'# Verify samples
+#'dir(wav.at)
+#'
+#'
+#'#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#'#  Align acoustic units using align.wave  #
+#'#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#'
+#'# Place sounds at the beginning of a sound window
+#'align.wave(wav.at=wav.at, wav.to="Aligned", time.length = 0.8, time.perc = 0.005, dBlevel = 25)
+#'
+#'# Verify alignment using analysis.type = "twoDshape"
+#'eigensound(analysis.type = "twoDshape", wav.at = file.path(wav.at, "Aligned"), dBlevel = 25, store.at=store.at, plot.exp=TRUE, flim=c(0, 4), tlim=c(0, 0.8), add.contour = T)
+#'# Go to folder specified by store.at and check jpeg files created
+#'# If alignment/window dimensions are not ideal, repeat the process with new settings
 #'
 #' }
 #'
