@@ -18,7 +18,7 @@ raven.to.wave(
 \item{wav.samples}{folder where new \code{".wav"} files will be stored. Can be either a filepath to the intended folder, or the name of the folder i.e.(\code{wav.samples = "wav samples"}). In the later case, a new folder will be created within the one specified by \code{orig.wav.folder}. Should be presented between quotation marks. By default: \code{wav.samples = "wav samples"}}
 }
 \description{
-create one \code{".wav"} file for each selection created using \href{https://ravensoundsoftware.com/software/raven-pro/}{Raven Pro} software, which is commonplace in bioacoustical analysis. Each selection (i.e. line in table) should represent a each acoustic unit within the sample study.
+Create one \code{".wav"} file for each selection created using \href{https://ravensoundsoftware.com/software/raven-pro/}{Raven Pro} software, which is commonplace in bioacoustical analysis. Each selection (i.e. line in table) should represent an acoustic unit from the sample study.
 }
 \examples{
 \donttest{
@@ -47,14 +47,18 @@ if(!dir.exists(store.at)) dir.create(store.at)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 # Export original sample ".wav" files from SoundShape examples
-writeWave(centralis, filename = file.path(orig.wav, "centralis.wav"), extensible = T)
-writeWave(cuvieri, filename = file.path(orig.wav, "cuvieri.wav"), extensible = T)
-writeWave(kroyeri, filename = file.path(orig.wav, "kroyeri.wav"), extensible = T)
+tuneR::writeWave(centralis, extensible = TRUE,
+                filename = file.path(orig.wav, "centralis.wav"))
+tuneR::writeWave(cuvieri, extensible = TRUE,
+                filename = file.path(orig.wav, "cuvieri.wav"))
+tuneR::writeWave(kroyeri, extensible = TRUE,
+                filename = file.path(orig.wav, "kroyeri.wav"))
 
 # Store Raven Pro selection tables at same folder from original ".wav" files
 for(i in 1:length(raven.list)){
  write.table(raven.list[i], file=file.path(orig.wav, names(raven.list)[i]),
-               quote=F, sep="\t", row.names = F, col.names = colnames(raven.list[[i]]))  } # end loop
+               quote=FALSE, sep="\t", row.names = FALSE,
+               col.names = colnames(raven.list[[i]]))  } # end loop
 
 
 # Verify if folder has both original ".wav" files and Raven's selections
@@ -75,14 +79,18 @@ dir(wav.at)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 # Place sounds at the beginning of a sound window
-align.wave(wav.at=wav.at, wav.to="Aligned", time.length = 0.8, time.perc = 0.005, dBlevel = 25)
+align.wave(wav.at=wav.at, wav.to="Aligned",
+          time.length = 0.8, time.perc = 0.005, dBlevel = 25)
 
 # Verify alignment using analysis.type = "twoDshape"
-eigensound(analysis.type = "twoDshape", wav.at = file.path(wav.at, "Aligned"), dBlevel = 25, store.at=store.at, plot.exp=TRUE, flim=c(0, 4), tlim=c(0, 0.8), add.contour = T)
+eigensound(analysis.type = "twoDshape", wav.at = file.path(wav.at, "Aligned"),
+          dBlevel = 25, store.at=store.at, plot.exp=TRUE,
+          flim=c(0, 4), tlim=c(0, 0.8), add.contour = TRUE)
 # Go to folder specified by store.at and check jpeg files created
-# If alignment/window dimensions are not ideal, repeat the process with new settings
+# If alignment/window dimensions are not ideal, repeat process with new settings
 
 }
+
 
 }
 \references{

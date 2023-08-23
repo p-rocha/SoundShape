@@ -1,13 +1,12 @@
 #' Export sample \code{".wav"} files using selections from Raven Pro software.
 #'
-#' @description create one \code{".wav"} file for each selection created using \href{https://ravensoundsoftware.com/software/raven-pro/}{Raven Pro} software, which is commonplace in bioacoustical analysis. Each selection (i.e. line in table) should represent a each acoustic unit within the sample study.
+#' @description Create one \code{".wav"} file for each selection created using \href{https://ravensoundsoftware.com/software/raven-pro/}{Raven Pro} software, which is commonplace in bioacoustical analysis. Each selection (i.e. line in table) should represent an acoustic unit from the sample study.
 #'
 #' @param orig.wav.folder filepath to the folder where original \code{".wav"} files are stored. Should be presented between quotation marks. By default: \code{orig.wav.folder = NULL} (i.e. user must specify the filepath to \code{".wav"} files)
 #'
 #' @param raven.at filepath to the folder where selection tables from \href{https://ravensoundsoftware.com/software/raven-pro/}{Raven Pro} software are stored. Should be presented between quotation marks. File name should end with \code{"selections.txt"}. By default: \code{raven.at = orig.wav.folder} (i.e. raven tables stored in the same folder as original  \code{".wav"} files)
 #'
 #' @param wav.samples folder where new \code{".wav"} files will be stored. Can be either a filepath to the intended folder, or the name of the folder i.e.(\code{wav.samples = "wav samples"}). In the later case, a new folder will be created within the one specified by \code{orig.wav.folder}. Should be presented between quotation marks. By default: \code{wav.samples = "wav samples"}
-#'
 #'
 #'
 #' @author
@@ -50,14 +49,18 @@
 #'#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 #'
 #'# Export original sample ".wav" files from SoundShape examples
-#'writeWave(centralis, filename = file.path(orig.wav, "centralis.wav"), extensible = T)
-#'writeWave(cuvieri, filename = file.path(orig.wav, "cuvieri.wav"), extensible = T)
-#'writeWave(kroyeri, filename = file.path(orig.wav, "kroyeri.wav"), extensible = T)
+#'tuneR::writeWave(centralis, extensible = TRUE,
+#'                 filename = file.path(orig.wav, "centralis.wav"))
+#'tuneR::writeWave(cuvieri, extensible = TRUE,
+#'                 filename = file.path(orig.wav, "cuvieri.wav"))
+#'tuneR::writeWave(kroyeri, extensible = TRUE,
+#'                 filename = file.path(orig.wav, "kroyeri.wav"))
 #'
 #'# Store Raven Pro selection tables at same folder from original ".wav" files
 #'for(i in 1:length(raven.list)){
 #'  write.table(raven.list[i], file=file.path(orig.wav, names(raven.list)[i]),
-#'                quote=F, sep="\t", row.names = F, col.names = colnames(raven.list[[i]]))  } # end loop
+#'                quote=FALSE, sep="\t", row.names = FALSE,
+#'                col.names = colnames(raven.list[[i]]))  } # end loop
 #'
 #'
 #'# Verify if folder has both original ".wav" files and Raven's selections
@@ -78,14 +81,18 @@
 #'#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 #'
 #'# Place sounds at the beginning of a sound window
-#'align.wave(wav.at=wav.at, wav.to="Aligned", time.length = 0.8, time.perc = 0.005, dBlevel = 25)
+#'align.wave(wav.at=wav.at, wav.to="Aligned",
+#'           time.length = 0.8, time.perc = 0.005, dBlevel = 25)
 #'
 #'# Verify alignment using analysis.type = "twoDshape"
-#'eigensound(analysis.type = "twoDshape", wav.at = file.path(wav.at, "Aligned"), dBlevel = 25, store.at=store.at, plot.exp=TRUE, flim=c(0, 4), tlim=c(0, 0.8), add.contour = T)
+#'eigensound(analysis.type = "twoDshape", wav.at = file.path(wav.at, "Aligned"),
+#'           dBlevel = 25, store.at=store.at, plot.exp=TRUE,
+#'           flim=c(0, 4), tlim=c(0, 0.8), add.contour = TRUE)
 #'# Go to folder specified by store.at and check jpeg files created
-#'# If alignment/window dimensions are not ideal, repeat the process with new settings
+#'# If alignment/window dimensions are not ideal, repeat process with new settings
 #'
 #' }
+#'
 #'
 #' @references
 #' Rocha, P. & Romano, P. (2021) The shape of sound: A new \code{R} package that crosses the bridge between Bioacoustics and Geometric Morphometrics. \emph{Methods in Ecology and Evolution, 12}(6), 1115-1121.
@@ -122,7 +129,7 @@ raven.to.wave <- function(orig.wav.folder=NULL, raven.at=orig.wav.folder, wav.sa
   # For each wav file, use Raven selections to create new files
   for(wav in wav.files){
 
-    raven.temp <- read.table(file.path(orig.wav.folder,
+    raven.temp <- utils::read.table(file.path(orig.wav.folder,
                                        grep(stringr::str_sub(wav,start=0, end = -5),
                                             raven.tables, value=T)), h=T, sep="\t")
     # Calculate duration (delta time)
