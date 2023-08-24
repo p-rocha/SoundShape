@@ -24,6 +24,14 @@ knitr::opts_chunk$set(
 
 Here, you will find information on how to implement a promising, and yet little explored method for biacoustical analysis: the so called *eigensound* analysis developed by MacLeod, Krieger and Jones (2013) and expanded by Rocha & Romano (2021).
 
+
+## Select your acoustic units using Raven Pro Software
+
+Since `SoundShape`'s version 1.3.0, the function `raven.to.wave` allows the creation of `".wav"` files based on selections made using [Raven Pro](http://ravensoundsoftware.com/software/raven-pro/), which is commonplace in bioacoustical analysis. Topic 3 below provides information on how to do it.
+
+
+## Introduction on eigensound analysis
+
 Eigensound is a multidisciplinary method focused on the direct comparison between homologous sounds from different species (*i.e.* stereotyped calls/acoustic units; Macleod *et al.*, 2013; Rocha & Romano, 2021). It consists on applying a sampling grid over the representation of sound (*i.e.* spectrogram data; Figs. 1 and 2) and then translate the spectrogram into a dataset that can be analyzed similarly to coordinate sets used in Geometric Morphometrics Methods (GMM). By doing so, eigensound crosses the bridge between Bioacoustics and GMM.
 
 Despite being well described by Macleod *et al.* (2013), the method lacked a free and open platform to run the analysis. `SoundShape` package was written on [R platform](https://www.r-project.org/) to fill this applicability gap. The package features functions that enable anyone familiar with `R` to easily go from sound waves to principal components analysis (PCA), using tools extracted from traditional bioacoustics (*i.e.* [tuneR](https://CRAN.R-project.org/package=tuneR) and [seewave](https://CRAN.R-project.org/package=seewave) packages), geometric morphometrics (*i.e.* [geomorph](https://CRAN.R-project.org/package=geomorph) package) and multivariate analysis (*e.g.* [stats](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/00Index.html) package).

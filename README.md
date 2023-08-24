@@ -11,6 +11,13 @@ little explored method for biacoustical analysis: the so called
 (2013) and expanded by
 Rocha & Romano (2021).
 
+## Select your acoustic units using Raven Pro Software
+
+Since `SoundShape`'s version 1.3.0, the function `raven.to.wave` allows the creation of `".wav"` files based on selections made using [Raven Pro](http://ravensoundsoftware.com/software/raven-pro/), which is commonplace in bioacoustical analysis. Topic 3 below provides information on how to do it.
+
+
+## Introduction on eigensound analysis
+
 Eigensound is a multidisciplinary method focused on the direct
 comparison between homologous sounds from different species (*i.e.*
 stereotyped calls/acoustic units; Macleod *et al.*, 2013; Rocha &
