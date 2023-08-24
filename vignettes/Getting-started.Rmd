@@ -27,7 +27,7 @@ Here, you will find information on how to implement a promising, and yet little 
 
 ## Select your acoustic units using Raven Pro Software
 
-Since `SoundShape`'s version 1.3.0, the function `raven.to.wave` allows the creation of `".wav"` files based on selections made using [Raven Pro](http://ravensoundsoftware.com/software/raven-pro/), which is commonplace in bioacoustical analysis. Topic 3 below provides information on how to do it.
+Since `SoundShape`'s version 1.3.0, the function `raven.to.wave` allows the creation of `".wav"` files based on selections made using [Raven Pro](https://ravensoundsoftware.com/software/raven-pro/), which is commonplace in bioacoustical analysis. Topic 3 below provides information on how to do it.
 
 
 ## Introduction on eigensound analysis
@@ -175,7 +175,7 @@ A reasonable number of comparable acoustic units should be selected from the sam
 
 Since the slightest graphical change may incur in biased results (MacLeod et al., 2013; Rocha & Romano, 2021), acoustic units must be selected according to optimal signal to noise ratio (*i.e.* "clean" recording), and no overlapping frequencies from other individuals, species, or background noise. Editing and filtering of sound waves must be restricted to a bare minimum.
 
-The selection can be performed on numerous softwares of acoustic analysis outside `R` platform (*e.g.* [Audacity](https://www.audacityteam.org/), [Raven Pro](http://ravensoundsoftware.com/software/raven-pro/)), or using some functions from [seewave](https://CRAN.R-project.org/package=seewave) and [tuneR](https://CRAN.R-project.org/package=tuneR) packages as exemplified below:
+The selection can be performed on numerous softwares of acoustic analysis outside `R` platform (*e.g.* [Audacity](https://www.audacityteam.org/), [Raven Pro](https://ravensoundsoftware.com/software/raven-pro/)), or using some functions from [seewave](https://CRAN.R-project.org/package=seewave) and [tuneR](https://CRAN.R-project.org/package=tuneR) packages as exemplified below:
   
 ```{r cut-units}
 # Select acoustic units
@@ -191,7 +191,7 @@ writeWave(cut.centralis, filename = file.path(wav.at, "cut.centralis.wav"), exte
 writeWave(cut.kroyeri, filename = file.path(wav.at, "cut.kroyeri.wav"), extensible = FALSE)
 ```
 
-Alternatively, since `SoundShape`'s version 1.3.0, the function `raven.to.wave` allows the creation of `".wav"` files based on selections made using [Raven Pro](http://ravensoundsoftware.com/software/raven-pro/), which is commonplace in bioacoustical analysis. Each selection (i.e. line in table; see `raven.list` documentation) should represent an acoustic unit from the sample study:
+Alternatively, since `SoundShape`'s version 1.3.0, the function `raven.to.wave` allows the creation of `".wav"` files based on selections made using [Raven Pro](https://ravensoundsoftware.com/software/raven-pro/), which is commonplace in bioacoustical analysis. Each selection (i.e. line in table; see `raven.list` documentation) should represent an acoustic unit from the sample study:
 
 ```r
 
@@ -261,7 +261,7 @@ graphics::par(oldpar)
 
 The eigensound protocol also requires acoustic units to be placed at the beginning of a sound window before proceeding with the analysis. This ensures that variation in each semilandmark is due to energy shifts within the call, not to changes in their relative position in the sound window (MacLeod et al., 2013).
 
-Although this arbitrary alignment could be performed on numerous software of acoustic analysis outside `R` platform (*e.g.* [Audacity](https://www.audacityteam.org/), [Raven Pro](http://ravensoundsoftware.com/software/raven-pro/)), `align.wave` function (`SoundShape` package) provide an easy alternative to automatically align the units at the beginning of a sound window whilst also standardizing the durations of `".wav"` files (see section 4.1), thus preventing errors when running `eigensound` function.  
+Although this arbitrary alignment could be performed on numerous software of acoustic analysis outside `R` platform (*e.g.* [Audacity](https://www.audacityteam.org/), [Raven Pro](https://ravensoundsoftware.com/software/raven-pro/)), `align.wave` function (`SoundShape` package) provide an easy alternative to automatically align the units at the beginning of a sound window whilst also standardizing the durations of `".wav"` files (see section 4.1), thus preventing errors when running `eigensound` function.  
 
 In order to verify the alignment, run `eigensound` with `analysis.type = "twoDshape"` and `plot.exp = TRUE`, which will create 2D spectrogram images and store them on the folder specified by `store.at` (see section 2 for folder paths), a helpful option for the verification of appropriate alignment and sound window dimensions.
 

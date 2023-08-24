@@ -13,7 +13,7 @@ Rocha & Romano (2021).
 
 ## Select your acoustic units using Raven Pro Software
 
-Since `SoundShape`'s version 1.3.0, the function `raven.to.wave` allows the creation of `".wav"` files based on selections made using [Raven Pro](http://ravensoundsoftware.com/software/raven-pro/), which is commonplace in bioacoustical analysis. Topic 3 below provides information on how to do it.
+Since `SoundShape`'s version 1.3.0, the function `raven.to.wave` allows the creation of `".wav"` files based on selections made using [Raven Pro](https://ravensoundsoftware.com/software/raven-pro/), which is commonplace in bioacoustical analysis. Topic 3 below provides information on how to do it.
 
 
 ## Introduction on eigensound analysis
@@ -251,7 +251,7 @@ be restricted to a bare minimum.
 The selection can be performed on numerous softwares of acoustic
 analysis outside `R` platform (*e.g.*
 [Audacity](https://www.audacityteam.org/), [Raven
-Pro](http://ravensoundsoftware.com/software/raven-pro/)), or using some
+Pro](https://ravensoundsoftware.com/software/raven-pro/)), or using some
 functions from [seewave](https://CRAN.R-project.org/package=seewave) and
 [tuneR](https://CRAN.R-project.org/package=tuneR) packages as
 exemplified below:
@@ -270,7 +270,7 @@ writeWave(cut.centralis, filename = file.path(wav.at, "cut.centralis.wav"), exte
 writeWave(cut.kroyeri, filename = file.path(wav.at, "cut.kroyeri.wav"), extensible = FALSE)
 ```
 
-Alternatively, since `SoundShape`'s version 1.3.0, the function `raven.to.wave` allows the creation of `".wav"` files based on selections made using [Raven Pro](http://ravensoundsoftware.com/software/raven-pro/), which is commonplace in bioacoustical analysis. Each selection (i.e. line in table; see `raven.list` documentation) should represent an acoustic unit from the sample study:
+Alternatively, since `SoundShape`'s version 1.3.0, the function `raven.to.wave` allows the creation of `".wav"` files based on selections made using [Raven Pro](https://ravensoundsoftware.com/software/raven-pro/), which is commonplace in bioacoustical analysis. Each selection (i.e. line in table; see `raven.list` documentation) should represent an acoustic unit from the sample study:
 
 ```r
 
@@ -366,7 +366,7 @@ window (MacLeod et al., 2013).
 Although this arbitrary alignment could be performed on numerous
 software of acoustic analysis outside `R` platform (*e.g.*
 [Audacity](https://www.audacityteam.org/), [Raven
-Pro](http://ravensoundsoftware.com/software/raven-pro/)), `align.wave`
+Pro](https://ravensoundsoftware.com/software/raven-pro/)), `align.wave`
 function (`SoundShape` package) provide an easy alternative to
 automatically align the units at the beginning of a sound window whilst
 also standardizing the durations of `".wav"` files (see section 4.1),
