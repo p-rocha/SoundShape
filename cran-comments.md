@@ -1,11 +1,7 @@
 ## Test environments
 * local R installation, Win x86_64
 
-* external Mac, x86_64-apple-darwin17.0 
-
-* ubuntu 16.04 (on travis-ci), R 4.1.0
-
-* win-builder (R-devel 4.3.0; release R 4.3.1)
+* win-builder (R-devel 4.3.1; pre-release R 4.4.0)
 
 ## R CMD check results
 

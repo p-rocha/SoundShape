@@ -263,6 +263,41 @@ writeWave(cut.centralis, filename = file.path(wav.at, "cut.centralis.wav"), exte
 writeWave(cut.kroyeri, filename = file.path(wav.at, "cut.kroyeri.wav"), extensible = FALSE)
 ```
 
+Alternatively, since `SoundShape`'s version 1.3.0, the function `raven.to.wave` allows the creation of `".wav"` files based on selections made using [Raven Pro](http://ravensoundsoftware.com/software/raven-pro/), which is commonplace in bioacoustical analysis. Each selection (i.e. line in table; see `raven.list` documentation) should represent an acoustic unit from the sample study:
+
+```r
+
+###
+## Using SoundShape examples:
+
+# Export original sample ".wav" files
+tuneR::writeWave(centralis, extensible = TRUE,
+                filename = file.path(orig.wav, "centralis.wav"))
+tuneR::writeWave(cuvieri, extensible = TRUE,
+                filename = file.path(orig.wav, "cuvieri.wav"))
+tuneR::writeWave(kroyeri, extensible = TRUE,
+                filename = file.path(orig.wav, "kroyeri.wav"))
+
+# Store Raven Pro selection tables at same folder from original ".wav" files
+for(i in 1:length(raven.list)){
+ write.table(raven.list[i], file=file.path(orig.wav, names(raven.list)[i]),
+               quote=FALSE, sep="\t", row.names = FALSE,
+               col.names = colnames(raven.list[[i]]))  } # end loop
+
+# Verify if folder has both original ".wav" files and Raven's selections
+dir(orig.wav)
+
+###
+## Start here when using your own recordings
+
+# Export a ".wav" sample for each selection made in Raven Pro
+raven.to.wave(orig.wav.folder = orig.wav, wav.samples = wav.at)
+
+# Verify samples
+dir(wav.at)
+```
+
+
 ## 4\. Three steps that avoid errors and biased results
 
 The semilandmarks from `eigensound` function (`SoundShape` package) are
