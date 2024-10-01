@@ -14,7 +14,7 @@
 #' Recorded at Ilhéus Municipality, Bahia State, Brazil, on 05 August 1972. Air temperature 24ºC.
 #'
 #' @format
-#' An object of the class \code{"Wave"} (\code{\link{tuneR}} package).
+#' An object of the class \code{"Wave"} (\code{\link[tuneR]} package).
 #'
 #' @source
 #' Original recording housed at Fonoteca Neotropical Jacques Vielliard (FNJV-0032047). Recorded by Werner Bokermann.

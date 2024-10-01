@@ -14,7 +14,7 @@
 #' Recorded at Formoso do Araguaia Municipality, Tocantins State, Brazil, on 9 December 1992. Air temperature 25ºC.
 #'
 #' @format
-#' An object of the class \code{"Wave"} (\code{\link{tuneR}} package).
+#' An object of the class \code{"Wave"} (\code{\link[tuneR]} package).
 #'
 #' @source
 #' Original recording housed at Fonoteca Neotropical Jacques Vielliard (FNJV-0031188). Recorded by Adão José Cardoso.
