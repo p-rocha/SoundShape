@@ -102,7 +102,6 @@
 #'
 raven.to.wave <- function(orig.wav.folder=NULL, raven.at=orig.wav.folder, wav.samples="wav samples"){
 
-
   if(is.null(orig.wav.folder)) {stop("Use 'orig.wav.folder' to specify folder path where original '.wav' files are stored")}
 
   # List ".wav" files
@@ -118,8 +117,6 @@ raven.to.wave <- function(orig.wav.folder=NULL, raven.at=orig.wav.folder, wav.sa
   if(length(raven.tables)!=length(wav.files)){
     warning("Number of selection tables from Raven Pro software differ from number of '.wav' files at folder specified by 'wav.at'. Some files may not have been analysed.")
   }
-
-
 
   # Create folder to store sample wav files
   if(!dir.exists(wav.samples) &
@@ -145,21 +142,16 @@ raven.to.wave <- function(orig.wav.folder=NULL, raven.at=orig.wav.folder, wav.sa
     raven.temp$Delta.Time <- raven.temp$End.Time..s.-raven.temp$Begin.Time..s.
 
     # Prevent errors related to multiple "View" levels
-    raven.temp <- raven.temp[raven.temp$View==as.factor(raven.temp$View)[1]]
+    raven.temp <- raven.temp[raven.temp$View==levels(as.factor(raven.temp$View))[1],]
 
 
     for(i in 1:length(raven.temp$Selection)){
 
       wav.temp <- tuneR::readWave(file.path(orig.wav.folder, wav), units="seconds",
-                                  from= raven.temp$Begin.Time..s.[
-                                    raven.temp$Selection== i ] -
-                                    raven.temp$Delta.Time[
-                                      raven.temp$Selection== i ]*0.15,
-                                  to= raven.temp$Begin.Time..s.[
-                                    raven.temp$Selection== i ] +
-                                    raven.temp$Delta.Time[
-                                      raven.temp$Selection== i ]*1.15)
-
+                                  from= raven.temp$Begin.Time..s.[i] -
+                                    raven.temp$Delta.Time[i]*0.15,
+                                  to= raven.temp$Begin.Time..s.[i] +
+                                    raven.temp$Delta.Time[i]*1.15)
 
       if(dir.exists(wav.samples)){
         tuneR::writeWave(wav.temp, extensible = T,
@@ -192,4 +184,3 @@ raven.to.wave <- function(orig.wav.folder=NULL, raven.at=orig.wav.folder, wav.sa
   rm(wav.files, raven.tables)
 
 } # end function
-
