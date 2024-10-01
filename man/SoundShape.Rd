@@ -2,8 +2,8 @@
 % Please edit documentation in R/SoundShape.R
 \docType{package}
 \name{SoundShape}
-\alias{SoundShape}
 \alias{SoundShape-package}
+\alias{SoundShape}
 \title{Sound Waves Onto Morphometric Data}
 \description{
 \code{SoundShape} package provide the tools required to implement a promising, and yet little explored method for bioacoustical analysis, the so called eigensound protocol developed by MacLeod, Krieger, & Jones (2013). Eigensound was developed for taxonomy-based bioacoustics and focuses on the comparison between acoustic units from different species. The method consists on applying a sampling grid over the 3D representation of sound (i.e. spectrogram data) and then translate the spectrogram into a dataset that can be analyzed similarly to 3D coordinate sets used in Geometric Morphometrics Methods, thus enabling the direct comparison between stereotyped calls from different species. For more information on \code{SoundShape} and the eigensound method, see Rocha & Romano (2021) and MacLeod et al. (2013).
