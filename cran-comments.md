@@ -1,7 +1,7 @@
 ## Test environments
 * local R installation, Win x86_64
 
-* win-builder (R-devel 4.3.3; pre-release R 4.4.0)
+* win-builder (R-devel 4.5.0; pre-release R 4.4.0)
 
 ## R CMD check results
 
