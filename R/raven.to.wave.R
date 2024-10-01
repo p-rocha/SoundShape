@@ -102,6 +102,7 @@
 #'
 raven.to.wave <- function(orig.wav.folder=NULL, raven.at=orig.wav.folder, wav.samples="wav samples"){
 
+
   if(is.null(orig.wav.folder)) {stop("Use 'orig.wav.folder' to specify folder path where original '.wav' files are stored")}
 
   # List ".wav" files
@@ -129,36 +130,46 @@ raven.to.wave <- function(orig.wav.folder=NULL, raven.at=orig.wav.folder, wav.sa
   # For each wav file, use Raven selections to create new files
   for(wav in wav.files){
 
-    raven.temp <- utils::read.table(file.path(orig.wav.folder,
-                                       grep(stringr::str_sub(wav,start=0, end = -5),
-                                            raven.tables, value=T)), h=T, sep="\t")
+    if(length(
+      grep(stringr::str_sub(wav, start=0, end = -5), raven.tables, value=T)) == 0 ){
+
+      stop(paste("The file '", wav, "' has no Raven selection table associated with it. File names from selection tables must be exactly the same as '.wav' files, and end with 'selections.txt'.", sep=""))
+    }
+
+    raven.temp <- utils::read.table(file.path(
+      orig.wav.folder,
+      grep(stringr::str_sub(wav,start=0, end = -5),
+           raven.tables, value=T)), h=T, sep="\t")
+
     # Calculate duration (delta time)
     raven.temp$Delta.Time <- raven.temp$End.Time..s.-raven.temp$Begin.Time..s.
 
-    for(i in 1:length(raven.temp$Selection[raven.temp$View=="Waveform 1"])){
+    # Prevent errors related to multiple "View" levels
+    raven.temp <- raven.temp[raven.temp$View==as.factor(raven.temp$View)[1]]
+
+
+    for(i in 1:length(raven.temp$Selection)){
 
       wav.temp <- tuneR::readWave(file.path(orig.wav.folder, wav), units="seconds",
                                   from= raven.temp$Begin.Time..s.[
-                                    raven.temp$Selection== i &
-                                      raven.temp$View=="Waveform 1"] -
+                                    raven.temp$Selection== i ] -
                                     raven.temp$Delta.Time[
-                                      raven.temp$Selection== i &
-                                        raven.temp$View=="Waveform 1"]*0.15,
+                                      raven.temp$Selection== i ]*0.15,
                                   to= raven.temp$Begin.Time..s.[
-                                    raven.temp$Selection== i &
-                                      raven.temp$View=="Waveform 1"] +
+                                    raven.temp$Selection== i ] +
                                     raven.temp$Delta.Time[
-                                      raven.temp$Selection== i &
-                                        raven.temp$View=="Waveform 1"]*1.15)
+                                      raven.temp$Selection== i ]*1.15)
 
 
       if(dir.exists(wav.samples)){
         tuneR::writeWave(wav.temp, extensible = T,
-                         filename=file.path(wav.samples, ifelse(i<10,
-                                                                paste(stringr::str_sub(wav,start=0, end = -5),
-                                                                      "_sample-0", i, ".wav", sep=""),
-                                                                paste(stringr::str_sub(wav,start=0, end = -5),
-                                                                      "_sample-", i, ".wav", sep="")))) }
+                         filename=file.path(
+                           wav.samples,
+                           ifelse(
+                             i<10, paste(stringr::str_sub(wav,start=0, end = -5),
+                                         "_sample-0", i, ".wav", sep=""),
+                             paste(stringr::str_sub(wav,start=0, end = -5),
+                                   "_sample-", i, ".wav", sep="")))) }
 
       if(!dir.exists(wav.samples)){
         tuneR::writeWave(wav.temp, extensible = T,
@@ -181,3 +192,4 @@ raven.to.wave <- function(orig.wav.folder=NULL, raven.at=orig.wav.folder, wav.sa
   rm(wav.files, raven.tables)
 
 } # end function
+
