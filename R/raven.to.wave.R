@@ -1,10 +1,10 @@
 #' Export sample \code{".wav"} files using selections from Raven Pro software.
 #'
-#' @description Create one \code{".wav"} file for each selection created using \href{https://ravensoundsoftware.com/software/raven-pro/}{Raven Pro} software, which is commonplace in bioacoustical analysis. Each selection (i.e. line in table) should represent an acoustic unit from the sample study.
+#' @description Create one \code{".wav"} file for each selection created using \href{https://www.ravensoundsoftware.com/software/raven-pro/}{Raven Pro} software, which is commonplace in bioacoustical analysis. Each selection (i.e. line in table) should represent an acoustic unit from the sample study.
 #'
 #' @param orig.wav.folder filepath to the folder where original \code{".wav"} files are stored. Should be presented between quotation marks. By default: \code{orig.wav.folder = NULL} (i.e. user must specify the filepath to \code{".wav"} files)
 #'
-#' @param raven.at filepath to the folder where selection tables from \href{https://ravensoundsoftware.com/software/raven-pro/}{Raven Pro} software are stored. Should be presented between quotation marks. File name should end with \code{"selections.txt"}. By default: \code{raven.at = orig.wav.folder} (i.e. raven tables stored in the same folder as original  \code{".wav"} files)
+#' @param raven.at filepath to the folder where selection tables from \href{https://www.ravensoundsoftware.com/software/raven-pro/}{Raven Pro} software are stored. Should be presented between quotation marks. File name should end with \code{"selections.txt"}. By default: \code{raven.at = orig.wav.folder} (i.e. raven tables stored in the same folder as original  \code{".wav"} files)
 #'
 #' @param wav.samples folder where new \code{".wav"} files will be stored. Can be either a filepath to the intended folder, or the name of the folder i.e.(\code{wav.samples = "wav samples"}). In the later case, a new folder will be created within the one specified by \code{orig.wav.folder}. Should be presented between quotation marks. By default: \code{wav.samples = "wav samples"}
 #'
@@ -19,7 +19,7 @@
 #' \itemize{
 #'   \item{\url{https://github.com/p-rocha/SoundShape}}
 #'   \item{Report bugs at \url{https://github.com/p-rocha/SoundShape/issues}}
-#'   \item{Raven Pro software \url{https://ravensoundsoftware.com/software/raven-pro/}}}
+#'   \item{Raven Pro software \url{https://www.ravensoundsoftware.com/software/raven-pro/}}}
 #'
 #'
 #' @examples

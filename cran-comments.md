@@ -8,7 +8,7 @@
 0 errors | 0 warnings | 0 notes
 
 ## Comments
-New release includes minor updates to raven.to.wave function, which prevents errors
+New release includes minor updates to raven.to.wave function, which prevents errors. Also fixed issues with invalid URLs.
 
 
 

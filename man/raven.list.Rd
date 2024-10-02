@@ -19,11 +19,11 @@ Sample data of \code{"Wave"} objects:
 data(raven.list)
 }
 \description{
-This sample file features a list of three \code{data.frame} objects containing the selection boxes for the acoustic units of \code{\link{centralis}}, \code{\link{cuvieri}} and \code{\link{kroyeri}}. The selection was performed manually using \href{https://ravensoundsoftware.com/software/raven-pro/}{Raven Pro} software, which is commonplace in bioacoustic analysis.
+This sample file features a list of three \code{data.frame} objects containing the selection boxes for the acoustic units of \code{\link{centralis}}, \code{\link{cuvieri}} and \code{\link{kroyeri}}. The selection was performed manually using \href{https://www.ravensoundsoftware.com/software/raven-pro/}{Raven Pro} software, which is commonplace in bioacoustic analysis.
 }
 \details{
 This sample list was built to illustrate the usage of \code{\link{raven.to.wave}} function.
-Each \code{data.frame} in the list represent selection boxes from \href{https://ravensoundsoftware.com/software/raven-pro/}{Raven Pro} software featuring either \code{\link{centralis}}, \code{\link{cuvieri}} or \code{\link{kroyeri}} samples. These, in turn, are acoustic recordings containing three stereotyped calls emitted by a male frog \emph{Physalaemus cuvieri}, \emph{P. centralis} or \emph{P. kroyeri}  (Amphibia, Anura, Leptodactylidae), respectively.
+Each \code{data.frame} in the list represent selection boxes from \href{https://www.ravensoundsoftware.com/software/raven-pro/}{Raven Pro} software featuring either \code{\link{centralis}}, \code{\link{cuvieri}} or \code{\link{kroyeri}} samples. These, in turn, are acoustic recordings containing three stereotyped calls emitted by a male frog \emph{Physalaemus cuvieri}, \emph{P. centralis} or \emph{P. kroyeri}  (Amphibia, Anura, Leptodactylidae), respectively.
 }
 \examples{
 \donttest{

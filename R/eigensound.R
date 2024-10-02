@@ -25,15 +25,15 @@
 #' @param plot.exp a logical. If \code{TRUE}, for each \code{".wav"} file on the folder indicated by \code{wav.at}, \code{eigensound} will store a spectrogram image on the folder indicated by \code{store.at}. Depending on the \code{analysis.type}, plots may consist of 2D or 3D spectrogram images. By default: \code{plot.exp = TRUE}
 #' @param plot.as only applies when \code{plot.exp = TRUE}. \code{plot.as = "jpeg"} will generate compressed images for quick inspection of semilandmarks; \code{plot.as = "tiff"} or \code{"tif"} will generate uncompressed high resolution images that can be edited and used for publication. By default: \code{plot.as = "jpeg"}
 #' @param plot.type only applies when \code{analysis.type = "threeDshape"} and  \code{plot.exp = TRUE}. \code{plot.type = "surface"} will produce simplified 3D sound surfaces from the calculated semilandmarks (same output employed by MacLeod et al., 2013); \code{plot.type = "points"} will produce 3D graphs with semilandmarks as points. By default: \code{plot.type = "surface"}
-#' @param rotate.Xaxis only applies when \code{analysis.type = "threeDshape"} and  \code{plot.exp = TRUE}. Rotation of the X-axis. Same as \code{theta} from \code{\link{persp3D}} (\code{\link{plot3D}} package). By default: \code{rotate.Xaxis = 60}
-#' @param rotate.Yaxis only applies when \code{analysis.type = "threeDshape"} and  \code{plot.exp = TRUE}. Rotation of the Y-axis. Same as \code{phi} from \code{\link{persp3D}} (\code{\link{plot3D}} package). By default: \code{rotate.Yaxis = 40}
+#' @param rotate.Xaxis only applies when \code{analysis.type = "threeDshape"} and  \code{plot.exp = TRUE}. Rotation of the X-axis. Same as \code{theta} from \code{\link[persp3D]{persp3D}} (\code{\link[plot3D]{plot3D}} package). By default: \code{rotate.Xaxis = 60}
+#' @param rotate.Yaxis only applies when \code{analysis.type = "threeDshape"} and  \code{plot.exp = TRUE}. Rotation of the Y-axis. Same as \code{phi} from \code{\link[persp3D]{persp3D}} (\code{\link[plot3D]{plot3D}} package). By default: \code{rotate.Yaxis = 40}
 #' @param TPS.file Desired name for the \code{tps} file containing semilandmark coordinates. Should be presented between quotation marks. \strong{Note:} Whenever \code{analysis.type = "twoDshape"}, it will only work if \code{add.points = TRUE}. By default: \code{TPS.file = NULL} (i.e. prevents \code{eigensound} from creating a \code{tps} file)
 #'
 #' @details
 #' When \code{analysis.type = "twoDshape"} and \code{add.points = TRUE}, \code{eigensound} will compute semilandmarks acquired by cross-correlation between energy quantiles (i.e. \code{EQ}) and a curve of relative amplitude (i.e. \code{dBlevel}). However, this is often subtle and prone to incur in errors (e.g. bad alignment of acoustic units; inappropriate X and Y coordinates for the sound window; narrow banded calls). Therefore, a more robust protocol of error verification is achieved using \code{add.points = FALSE} and \code{add.contour = TRUE} (default), which allow for quick verification of acoustic units alignment and the shape of each curve of relative amplitude (specified by \code{dBlevel}).
 #'
 #' @note
-#' In order to store the results from \code{eigensound} function and proceed with the Geometric Morphometric steps of the analysis (e.g. \code{\link{geomorph}} package; Adams et al., 2017), one can simultaneosly assign the function's output to an \code{R} object and/or store them as a \code{tps} file to be used by numerous softwares of geometric analysis of shape, such as the TPS series (Rohlf, 2015).
+#' In order to store the results from \code{eigensound} function and proceed with the Geometric Morphometric steps of the analysis (e.g. \code{\link[geomorph]{geomorph}} package; Adams et al., 2017), one can simultaneosly assign the function's output to an \code{R} object and/or store them as a \code{tps} file to be used by numerous softwares of geometric analysis of shape, such as the TPS series (Rohlf, 2015).
 #'
 #' Additionally, one may also export 2D or 3D plots as \code{jpeg} (compressed image) or \code{tiff} (uncompressed image) file formats, which can be edited for publication purposes.
 #'
@@ -51,7 +51,7 @@
 #' Rohlf, F.J. (2015) The tps series of software. \emph{Hystrix 26}, 9-12.
 #'
 #' @seealso
-#' \code{\link{align.wave}}, \code{\link{geomorph}}, \code{\link{seewave}}
+#' \code{\link{align.wave}}, \code{\link[geomorph]{geomorph}}, \code{\link[seewave]{seewave}}
 #'
 #' Useful links:
 #' \itemize{

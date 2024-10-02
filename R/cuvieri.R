@@ -14,7 +14,7 @@
 #' Recorded at São José dos Campos Municipality, São Paulo State, Brazil, on 24 September 2013. Air temperature 22ºC.
 #'
 #' @format
-#' An object of class \code{"Wave"}; see (\code{\link[tuneR]} package).
+#' An object of class \code{"Wave"}; see (\code{\link[tuneR]{tuneR}} package).
 #'
 #' @source
 #' Original recording housed at Coleção Bioacústica da Universidade Federal de Minas Gerais (CBUFMG-00196). Recorded by Pedro Rocha.
