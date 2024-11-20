@@ -18,8 +18,8 @@
 #' @param plot.exp a logical. If \code{TRUE}, exports the 3D output plot containing mean shape (\code{PC = "mean"}), or minimum and maximum deformations for the desired Principal Component (e.g. \code{PC = 1}). Exported plot will be stored on the folder indicated by \code{store.at}. By default: \code{plot.exp = FALSE}
 #' @param plot.as only applies when \code{plot.exp = TRUE}. \code{plot.as = "jpeg"} will generate compressed images for quick inspection; \code{plot.as = "tiff"} or \code{"tif"} will generate uncompressed high resolution images that can be edited and used for publication. By default: \code{plot.as = "jpeg"}
 #' @param store.at only applies when \code{plot.exp = TRUE}. Filepath to the folder where output plots will be stored. Should be presented between quotation marks. By default: \code{store.at = NULL} (i.e. user must specify the filepath where plots of hypothetical sound surfaces will be stored)
-#' @param rotate.Xaxis rotation of the X-axis. Same as \code{theta} from \code{\link[persp3D]{persp3D}} (\code{\link[plot3D]{plot3D}} package). By default: \code{rotate.Xaxis = 60}
-#' @param rotate.Yaxis rotation of the Y-axis. Same as \code{phi} from \code{\link[persp3D]{persp3D}} (\code{\link[plot3D]{plot3D}} package). By default: \code{rotate.Yaxis = 40}
+#' @param rotate.Xaxis rotation of the X-axis. Same as \code{theta} from \code{\link[plot3D]{persp3D}}. By default: \code{rotate.Xaxis = 60}
+#' @param rotate.Yaxis rotation of the Y-axis. Same as \code{phi} from \code{\link[plot3D]{persp3D}}. By default: \code{rotate.Yaxis = 40}
 #' @param cex.axis similarly as in \code{\link{par}}, magnification to be used for axis values. By default: \code{cex.axis = 0.9}
 #' @param cex.lab similarly as in \code{\link{par}}, magnification to be used for x and y labels. By default: \code{cex.lab = 1.2}
 #' @param cex.main similarly as in \code{\link{par}}, magnification to be used for main titles. By default: \code{cex.main = 1.3}
@@ -27,16 +27,16 @@
 #' @param xlab a character string indicating the label to be written on the *x*-axis. By default: \code{xlab="Time coordinates"}
 #' @param ylab a character string indicating the label to be written on the *y*-axis. By default: \code{ylab="Frequency coordinates"}
 #' @param zlab a character string indicating the label to be written on the *z*-axis. By default: \code{zlab="Amplitude"}
-#' @param colkey Similarly as \code{\link[plot3D]{plot3D}}, a list with parameters for the color key (legend). By default: \code{colkey = list(plot = TRUE, cex.clab = 0.9, cex.axis = 0.8, side = 4, length = 0.5, width = 0.7, labels = TRUE, tick = TRUE, lty = 1, lwd = 1, lwd.ticks = 1)}. See also \code{\link[colkey]{colkey}}
+#' @param colkey Similarly as \code{\link[plot3D]{plot3D}}, a list with parameters for the color key (legend). By default: \code{colkey = list(plot = TRUE, cex.clab = 0.9, cex.axis = 0.8, side = 4, length = 0.5, width = 0.7, labels = TRUE, tick = TRUE, lty = 1, lwd = 1, lwd.ticks = 1)}. See also \code{\link[plot3D]{colkey}}
 #'
 #' @note
-#' Some codes from \code{hypo.surf} were adapted from \code{plotTangentSpace} function (\code{\link[geomorph]{geomorph}} package version 3.1.2), which is now deprecated and replaced by current functions \code{\link[gm.prcomp]{gm.prcomp}}, \code{\link[summary.gm.prcomp]{summary.gm.prcomp}} and \code{\link[plot.gm.prcomp]{plot.gm.prcomp}}. More specifically, the code chunk related to the acquisition of hypothetical point configurations from each PC (i.e. warp grids) was the same as in \code{plotTangentSpace}. However, the hypothetical configurations from \code{plotTangentSpace} were plotted along with ordination of PCs, whereas \code{hypo.surf} focuses solely on hypothetical 3D surfaces that represent minimum, maximum and mean deformations relative to each PCs.
+#' Some codes from \code{hypo.surf} were adapted from \code{plotTangentSpace} function (\code{\link[geomorph]{geomorph}} package version 3.1.2), which is now deprecated and replaced by current functions \code{\link[geomorph]{gm.prcomp}}, \code{\link[geomorph]{summary.gm.prcomp}} and \code{\link[geomorph]{plot.gm.prcomp}}. More specifically, the code chunk related to the acquisition of hypothetical point configurations from each PC (i.e. warp grids) was the same as in \code{plotTangentSpace}. However, the hypothetical configurations from \code{plotTangentSpace} were plotted along with ordination of PCs, whereas \code{hypo.surf} focuses solely on hypothetical 3D surfaces that represent minimum, maximum and mean deformations relative to each PCs.
 #'
 #'
 #'
 #'
 #' @seealso
-#' \code{\link[gm.prcomp]{gm.prcomp}}, \code{\link[summary.gm.prcomp]{summary.gm.prcomp}}, \code{\link[plot.gm.prcomp]{plot.gm.prcomp}}, \code{\link[geomorph]{geomorph}}, \code{\link{eigensound}}, \code{\link{pca.plot}}
+#' \code{\link[geomorph]{gm.prcomp}}, \code{\link[geomorph]{summary.gm.prcomp}}, \code{\link[geomorph]{plot.gm.prcomp}}, \code{\link[geomorph]{geomorph}}, \code{\link{eigensound}}, \code{\link{pca.plot}}
 #'
 #' Useful links:
 #' \itemize{

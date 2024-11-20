@@ -58,9 +58,9 @@ hypo.surf(
 
 \item{store.at}{only applies when \code{plot.exp = TRUE}. Filepath to the folder where output plots will be stored. Should be presented between quotation marks. By default: \code{store.at = NULL} (i.e. user must specify the filepath where plots of hypothetical sound surfaces will be stored)}
 
-\item{rotate.Xaxis}{rotation of the X-axis. Same as \code{theta} from \code{\link[persp3D]{persp3D}} (\code{\link[plot3D]{plot3D}} package). By default: \code{rotate.Xaxis = 60}}
+\item{rotate.Xaxis}{rotation of the X-axis. Same as \code{theta} from \code{\link[plot3D]{persp3D}}. By default: \code{rotate.Xaxis = 60}}
 
-\item{rotate.Yaxis}{rotation of the Y-axis. Same as \code{phi} from \code{\link[persp3D]{persp3D}} (\code{\link[plot3D]{plot3D}} package). By default: \code{rotate.Yaxis = 40}}
+\item{rotate.Yaxis}{rotation of the Y-axis. Same as \code{phi} from \code{\link[plot3D]{persp3D}}. By default: \code{rotate.Yaxis = 40}}
 
 \item{cex.axis}{similarly as in \code{\link{par}}, magnification to be used for axis values. By default: \code{cex.axis = 0.9}}
 
@@ -76,7 +76,7 @@ hypo.surf(
 
 \item{zlab}{a character string indicating the label to be written on the \emph{z}-axis. By default: \code{zlab="Amplitude"}}
 
-\item{colkey}{Similarly as \code{\link[plot3D]{plot3D}}, a list with parameters for the color key (legend). By default: \code{colkey = list(plot = TRUE, cex.clab = 0.9, cex.axis = 0.8, side = 4, length = 0.5, width = 0.7, labels = TRUE, tick = TRUE, lty = 1, lwd = 1, lwd.ticks = 1)}. See also \code{\link[colkey]{colkey}}}
+\item{colkey}{Similarly as \code{\link[plot3D]{plot3D}}, a list with parameters for the color key (legend). By default: \code{colkey = list(plot = TRUE, cex.clab = 0.9, cex.axis = 0.8, side = 4, length = 0.5, width = 0.7, labels = TRUE, tick = TRUE, lty = 1, lwd = 1, lwd.ticks = 1)}. See also \code{\link[plot3D]{colkey}}}
 }
 \description{
 Using the coordinates acquired by \code{eigensound(analysis.type = "threeDshape")}, this function creates 3D plots containing hypothetical sound surfaces that represent either the mean shape configuration (consensus), or minimum and maximum deformations relative to Principal Components in a Principal Components Analysis (PCA).
@@ -84,7 +84,7 @@ Using the coordinates acquired by \code{eigensound(analysis.type = "threeDshape"
 \strong{Note:} The output of \code{hypo.surf} must be interpreted along with the ordination of Principal Components (e.g. \code{\link{pca.plot}}), both featuring the same object used for \code{threeD.out} argument. By doing so, \code{hypo.surf} enhance the comprehension on how sound shape changed along the ordination plot .
 }
 \note{
-Some codes from \code{hypo.surf} were adapted from \code{plotTangentSpace} function (\code{\link[geomorph]{geomorph}} package version 3.1.2), which is now deprecated and replaced by current functions \code{\link[gm.prcomp]{gm.prcomp}}, \code{\link[summary.gm.prcomp]{summary.gm.prcomp}} and \code{\link[plot.gm.prcomp]{plot.gm.prcomp}}. More specifically, the code chunk related to the acquisition of hypothetical point configurations from each PC (i.e. warp grids) was the same as in \code{plotTangentSpace}. However, the hypothetical configurations from \code{plotTangentSpace} were plotted along with ordination of PCs, whereas \code{hypo.surf} focuses solely on hypothetical 3D surfaces that represent minimum, maximum and mean deformations relative to each PCs.
+Some codes from \code{hypo.surf} were adapted from \code{plotTangentSpace} function (\code{\link[geomorph]{geomorph}} package version 3.1.2), which is now deprecated and replaced by current functions \code{\link[geomorph]{gm.prcomp}}, \code{\link[geomorph]{summary.gm.prcomp}} and \code{\link[geomorph]{plot.gm.prcomp}}. More specifically, the code chunk related to the acquisition of hypothetical point configurations from each PC (i.e. warp grids) was the same as in \code{plotTangentSpace}. However, the hypothetical configurations from \code{plotTangentSpace} were plotted along with ordination of PCs, whereas \code{hypo.surf} focuses solely on hypothetical 3D surfaces that represent minimum, maximum and mean deformations relative to each PCs.
 }
 \examples{
 data(eig.sample)
@@ -116,7 +116,7 @@ MacLeod, N., Krieger, J. & Jones, K. E. (2013). Geometric morphometric approache
 Rocha, P. & Romano, P. (2021) The shape of sound: A new \code{R} package that crosses the bridge between Bioacoustics and Geometric Morphometrics. \emph{Methods in Ecology and Evolution, 12}(6), 1115-1121.
 }
 \seealso{
-\code{\link[gm.prcomp]{gm.prcomp}}, \code{\link[summary.gm.prcomp]{summary.gm.prcomp}}, \code{\link[plot.gm.prcomp]{plot.gm.prcomp}}, \code{\link[geomorph]{geomorph}}, \code{\link{eigensound}}, \code{\link{pca.plot}}
+\code{\link[geomorph]{gm.prcomp}}, \code{\link[geomorph]{summary.gm.prcomp}}, \code{\link[geomorph]{plot.gm.prcomp}}, \code{\link[geomorph]{geomorph}}, \code{\link{eigensound}}, \code{\link{pca.plot}}
 
 Useful links:
 \itemize{

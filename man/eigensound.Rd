@@ -74,9 +74,9 @@ eigensound(
 
 \item{plot.type}{only applies when \code{analysis.type = "threeDshape"} and  \code{plot.exp = TRUE}. \code{plot.type = "surface"} will produce simplified 3D sound surfaces from the calculated semilandmarks (same output employed by MacLeod et al., 2013); \code{plot.type = "points"} will produce 3D graphs with semilandmarks as points. By default: \code{plot.type = "surface"}}
 
-\item{rotate.Xaxis}{only applies when \code{analysis.type = "threeDshape"} and  \code{plot.exp = TRUE}. Rotation of the X-axis. Same as \code{theta} from \code{\link[persp3D]{persp3D}} (\code{\link[plot3D]{plot3D}} package). By default: \code{rotate.Xaxis = 60}}
+\item{rotate.Xaxis}{only applies when \code{analysis.type = "threeDshape"} and  \code{plot.exp = TRUE}. Rotation of the X-axis. Same as \code{theta} from \code{\link[plot3D]{persp3D}}. By default: \code{rotate.Xaxis = 60}}
 
-\item{rotate.Yaxis}{only applies when \code{analysis.type = "threeDshape"} and  \code{plot.exp = TRUE}. Rotation of the Y-axis. Same as \code{phi} from \code{\link[persp3D]{persp3D}} (\code{\link[plot3D]{plot3D}} package). By default: \code{rotate.Yaxis = 40}}
+\item{rotate.Yaxis}{only applies when \code{analysis.type = "threeDshape"} and  \code{plot.exp = TRUE}. Rotation of the Y-axis. Same as \code{phi} from \code{\link[plot3D]{persp3D}}. By default: \code{rotate.Yaxis = 40}}
 
 \item{TPS.file}{Desired name for the \code{tps} file containing semilandmark coordinates. Should be presented between quotation marks. \strong{Note:} Whenever \code{analysis.type = "twoDshape"}, it will only work if \code{add.points = TRUE}. By default: \code{TPS.file = NULL} (i.e. prevents \code{eigensound} from creating a \code{tps} file)}
 }
